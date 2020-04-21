@@ -1,0 +1,63 @@
+body {
+    margin: 0;
+    background: #1e272e;
+    color: white;
+}
+.dodajwpis {
+    color: white;
+    width: 500px;
+    position: relative;
+    margin-top: 200px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.dodajwpis button {
+    margin-top: 15px;
+}
+.dodajwpis textarea {
+    resize: vertical;
+    max-height: 150px;
+    min-height: 100px;
+    color: white;
+    border: none;
+}
+.card {
+    margin: 0 auto;
+}
+
+.usunwpis {
+    border:none;
+    outline:none;
+    background:none;
+    cursor:pointer;
+    padding:0;
+    color: red;
+}
+form {
+    margin: 0;
+}
+#komentarz {
+    width: 250px;
+    padding: 5px;
+    margin-top: 10px;
+    display: inline-block;
+    background-color: #1e272e;
+    color: white;
+    border: none;
+}
+.komentarze {
+    margin-top: 10px;
+}
+.sort {
+    margin: 15px;
+}
+.btn {
+	margin-right: 10px;
+}
+.usunkomentarz {
+    margin-left: 10px;
+    color: grey;
+}
+.usunkomentarz:hover {
+    cursor: pointer;
+}

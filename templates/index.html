@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Darmowy, nowoczesny mikroblog, możesz tutaj porozmawiać o wszystkim.">
+    <meta name="Keywords" content="mikroblog, ivall, rozmowy, chat">
+    <title>Mikroblog</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/033e78e466.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+{% include 'navbar.html' %}
+{% if session['login'] %}
+<form action="{{ url_for('dodajwpis_blueprint.dodajwpis') }}" class="dodajwpis" method="post" onsubmit="wpisbtn.disabled = true;">
+    <div class="form-group">
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-danger" role="alert">
+              {{message}}
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+        {{ form.csrf_token }}
+        {{ form.wpis(placeholder="Treść",class_="form-control bg-dark text-white",rows="4") }}
+        <button type="submit" class="btn btn-primary" name="wpisbtn">Dodaj wpis</button>
+    </div>
+</form>
+{% endif %}
+<div class="container" style="{% if session['login'] %}margin-top: -50px;{% else %}margin-top: 80px;{% endif %}">
+<ul class="nav nav-pills justify-content-center">
+  <li class="nav-item sort">
+    <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="{{ url_for('index') }}">Ostatnie</a>
+  </li>
+  <li class="nav-item sort">
+    <a class="nav-link {% if request.path == '/popularne' %}active{% endif %}" href="{{ url_for('popularne') }}">Popularne</a>
+  </li>
+</ul>
+{% for row in wpisy %}
+<div class="card bg-dark mb-3" id="wpis{{ row.id }}" style="max-width: 40rem; color: white;">
+    <div class="card-header">
+        {% if row.autor == "ivall" %}
+        <span style="color: red;">{{ row.autor }}</span>
+        {% else %}
+            {{ row.autor }}
+        {% endif %}
+        <div class="float-sm-right">
+
+                <input type="hidden" name="postid" id="postid" value="{{ row.id }}">
+                {% if session['login'] %}
+                    {% for lrow in lajki if lrow.post_id == row.id and lrow.user_id == session['login'] %}
+                        <button id="likebtn{{ row.id }}" class="btn btn-danger btn-sm unlajkbtn" post_id="{{ row.id }}" type="submit">Odlub</button>
+                    {% else %}
+                        <button id="likebtn{{ row.id }}" class="btn btn-success btn-sm lajkbtn" post_id="{{ row.id }}" type="submit">Polub</button>
+                    {% endfor %}
+                {% endif %}
+
+            <i class="fas fa-thumbs-up" style="display:inline-block;"></i> <div class="likes{{ row.id }}" style="display: inline-block;">{{ row.lajki }}</div>
+        </div>
+    </div>
+    <div class="card-body">
+        <p class="card-text">{{ row.tresc }}</p>
+                    {% if session['login'] == row.autor %}
+                    <input type="hidden" name="postid" value="{{ row.id }}">
+                    <button type="submit" class="usunwpis" post_id="{{ row.id }}">Usuń wpis</button>
+            {% endif %}
+            </div>
+    <div class="card-footer">
+		{% if session['login'] %}
+        <form action="{{ url_for('dodajkomentarz_blueprint.dodajkomentarz') }}" method="post" onsubmit="kombtn.disabled = true;">
+            {{ formk.csrf_token }}
+            {{ formk.komentarz(placeholder="Komentarz",class_="form-control") }}
+            <input type="hidden" name="postid" value="{{ row.id }}">
+            <button type="submit" name="kombtn" class="btn btn-primary btn-sm" style="display: inline-block; margin-top: -5px;">Wyślij</button>
+        </form>
+        {% endif %}
+        <div class="komentarze">
+        {% for krow in komentarze %}
+            {% if krow.post_id == row.id %}
+                <div class="komentarz{{ krow.id }}">
+                    {% if krow.autor == row.autor %}<u>{{ krow.autor }}</u>:{% else %}{{ krow.autor }}:{% endif %} {{ krow.tresc }}
+                    {% if krow.autor == session['login'] %}
+                        <span class="usunkomentarz" kom_id="{{ krow.id }}">&times;</span>
+                    {% endif %}<br/>
+                </div>
+            {% endif %}
+        {% endfor %}
+        </div>
+    </div>
+</div>
+{% endfor %}
+</div>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="{{ url_for('static', filename='javascript/app.js') }}"></script>
+</body>

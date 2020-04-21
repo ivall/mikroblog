@@ -1,0 +1,28 @@
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark" style="z-index: 2;">
+  <a class="navbar-brand" href="{{ url_for('index') }}" onclick="window.scrollTo(0,0)">Mikroblog</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    {% if session['login'] %}
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+            <a class="nav-link">Witaj, {{ session['login'] }}</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('logout_blueprint.logout') }}">Wyloguj</a>
+        </li>
+    </ul>
+    {% else %}
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('login_blueprint.login') }}">Zaloguj</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('register_blueprint.register') }}">Zarejestruj</a>
+        </li>
+    </ul>
+    {% endif %}
+  </div>
+</nav>
