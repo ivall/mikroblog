@@ -15,7 +15,7 @@ def register():
     formr = RejestracjaForm()
     if request.method == 'POST':
         if formr.validate_on_submit():
-            login = formr.nick.data
+            login = formr.nick.data.replace(" ", "")
             cur = mysql.connection.cursor()
             cur.execute("SELECT * FROM users WHERE login=%s",(login,))
             checkUsername = cur.fetchall()

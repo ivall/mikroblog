@@ -36,7 +36,7 @@ body {
 form {
     margin: 0;
 }
-#komentarz {
+.komentarz {
     width: 250px;
     padding: 5px;
     margin-top: 10px;
@@ -63,4 +63,11 @@ form {
 }
 footer {
     margin-top: 50px;
+}
+.card {
+    max-width: 40rem;
+    color: white;
+}
+.autorwpisu {
+    text-decoration: underline;
 }

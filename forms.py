@@ -1,4 +1,3 @@
-from flask import Flask
 from flask_wtf import FlaskForm, RecaptchaField
 from wtforms import StringField, validators, TextAreaField, PasswordField
 
@@ -15,7 +14,3 @@ class RejestracjaForm(FlaskForm):
     password = PasswordField('password', [validators.DataRequired()])
     recaptcha = RecaptchaField()
 
-
-#dodawanie komentarzy
-class KomentarzForm(FlaskForm):
-    komentarz = StringField('komentarz', [validators.DataRequired(), validators.Length(min=2, max=50)])

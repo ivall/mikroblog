@@ -1,31 +1,29 @@
 $(document).ready(function() {
     $(document).on("click", ".lajkbtn", function() {
-        var lajki = $(this).attr('post_id');
+        var post_id = $(this).attr('post_id');
         var $btn = $(this);
-
-
         $.ajax({
             url : '/like',
             type : 'POST',
-            data : { postid : lajki },
+            data : { postid : post_id },
         success: function(data) {
             $btn.removeClass('btn btn-success btn-sm lajkbtn').addClass('btn btn-danger btn-sm unlajkbtn');
             $btn.text("Odlub");
-            $('.likes' + lajki).text(data.lajkixd);
+            $('.likes' + post_id).text(data.likes);
         }
         });
     });
     $(document).on("click", ".unlajkbtn", function() {
-        var lajki = $(this).attr('post_id');
+        var post_id = $(this).attr('post_id');
         var $btn = $(this);
         $.ajax({
             url : '/unlike',
             type : 'POST',
-            data : { postid : lajki },
+            data : { postid : post_id },
             success: function(data) {
                 $btn.removeClass('btn btn-danger btn-sm unlajkbtn').addClass('btn btn-success btn-sm lajkbtn');
                 $btn.text("Polub");
-                $('.likes' + lajki).text(data.lajkixd);
+                $('.likes' + post_id).text(data.likes);
             }
         });
     });
@@ -54,6 +52,38 @@ $(document).ready(function() {
             },
             error: function() {
                 alert("Wystąpił błąd");
+            }
+        });
+    });
+    $(document).on("click", ".dodajkomentarz", function() {
+        var post_id = $(this).attr('post_id');
+        var inputvalue = $("#komentarz"+post_id).val();
+
+        $.ajax({
+            type: "POST",
+            url: "/dodajkomentarz",
+            data: { post_id : post_id, inputvalue : inputvalue },
+            success: function(data) {
+                $("#komentarz"+post_id).val("");
+                if($(".autorwpisu"+post_id).text() === data.autor) {
+                    var span = $('<span />',{
+                        class:'usunkomentarz' ,
+                        kom_id: data.komid,
+                        html:'&times;'
+                    });
+                    var div = $('<div />',{
+                        class:'komentarz'+data.komid ,
+                        html:'<b>'+data.autor+'</b>: '+data.tresc
+                    });
+                    $(".komentarze"+post_id).prepend(div);
+                    span.appendTo('.komentarz'+data.komid);
+                }
+                else {
+                    $(".komentarze"+post_id).prepend($('<div>', {class: 'komentarz'+data.komid, text: data.autor+": "+data.tresc}));
+                }
+            },
+            error: function() {
+                alert("Wystąpił błąd, minimalna długość komentarza to 2 znaki, a maksymalna 50 znaków");
             }
         });
     });

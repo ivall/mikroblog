@@ -9,7 +9,6 @@ from blueprints.remove import remove_blueprint
 from blueprints.wpis import wpis_blueprint
 from blueprints.removekom import removekom_blueprint
 from blueprints.likesystem import likesystem_blueprint
-from forms import KomentarzForm
 from forms import WpisForm
 from errors import page_not_found
 
@@ -26,7 +25,6 @@ app.jinja_env.lstrip_blocks = True
 @app.route('/', methods=['GET'])
 def index():
     form = WpisForm()
-    formk = KomentarzForm()
     cur = mysql.connection.cursor()
     cur.execute("SELECT * FROM wpisy ORDER BY `id` DESC")
     wpisy = cur.fetchall()
@@ -35,13 +33,12 @@ def index():
     cur.execute("SELECT * FROM likes")
     likes = cur.fetchall()
     cur.close()
-    return render_template('index.html', wpisy=wpisy, komentarze=komentarze, lajki=likes, form=form, formk=formk)
+    return render_template('index.html', wpisy=wpisy, komentarze=komentarze, lajki=likes, form=form)
 
 
 @app.route('/popularne', methods=['GET'])
 def popularne():
     form = WpisForm()
-    formk = KomentarzForm()
     cur = mysql.connection.cursor()
     cur.execute("SELECT * FROM wpisy ORDER BY `lajki` DESC")
     wpisy = cur.fetchall()
@@ -50,7 +47,7 @@ def popularne():
     cur.execute("SELECT * FROM likes")
     likes = cur.fetchall()
     cur.close()
-    return render_template('index.html', wpisy=wpisy, komentarze=komentarze, lajki=likes, form=form, formk=formk)
+    return render_template('index.html', wpisy=wpisy, komentarze=komentarze, lajki=likes, form=form)
 
 
 app.register_blueprint(likesystem_blueprint)

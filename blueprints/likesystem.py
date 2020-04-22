@@ -24,7 +24,7 @@ def like():
         mysql.connection.commit()
         cur.close()
         rowapi = table['lajki'] + 1
-        return jsonify({'lajkixd': rowapi})
+        return jsonify({'likes': rowapi})
     return redirect(url_for('index'))
 
 
@@ -43,5 +43,5 @@ def unlike():
         mysql.connection.commit()
         cur.close()
         rowapi = table['lajki'] - 1
-        return jsonify({'lajkixd': rowapi})
+        return jsonify({'likes': rowapi})
     return redirect(url_for('index'))
