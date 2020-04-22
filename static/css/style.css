@@ -61,3 +61,6 @@ form {
 .usunkomentarz:hover {
     cursor: pointer;
 }
+footer {
+    margin-top: 50px;
+}

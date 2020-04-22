@@ -1,5 +1,5 @@
-from flask import Flask, render_template, request, session, url_for, redirect, flash, jsonify
-from flask_mysqldb import MySQL, MySQLdb
+from flask import Flask, render_template
+from flask_mysqldb import MySQL
 from blueprints.logout import logout_blueprint
 from blueprints.register import register_blueprint
 from blueprints.login import login_blueprint
@@ -11,15 +11,11 @@ from blueprints.removekom import removekom_blueprint
 from blueprints.likesystem import likesystem_blueprint
 from forms import KomentarzForm
 from forms import WpisForm
+from errors import page_not_found
 
 app = Flask(__name__)
 app.config.from_object('config')
 mysql = MySQL(app)
-
-
-def page_not_found(e):
-    return redirect(url_for('index'))
-
 
 app.register_error_handler(404, page_not_found)
 
