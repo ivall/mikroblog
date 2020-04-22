@@ -8,6 +8,7 @@ from blueprints.dodajwpis import dodajwpis_blueprint
 from blueprints.remove import remove_blueprint
 from blueprints.wpis import wpis_blueprint
 from blueprints.removekom import removekom_blueprint
+from blueprints.likesystem import likesystem_blueprint
 from forms import KomentarzForm
 from forms import WpisForm
 
@@ -56,43 +57,7 @@ def popularne():
     return render_template('index.html', wpisy=wpisy, komentarze=komentarze, lajki=likes, form=form, formk=formk)
 
 
-@app.route('/like', methods=['POST'])
-def like():
-    postid = request.form['postid']
-    cur = mysql.connection.cursor()
-    cur.execute("SELECT * FROM likes WHERE user_id=%s AND post_id=%s", (session['login'], postid,))
-    likes = cur.fetchall()
-    if not likes:
-        cur.execute("SELECT * FROM wpisy WHERE id=%s", (postid,))
-        table = cur.fetchone()
-        row = table['lajki']
-        cur.execute("UPDATE wpisy SET lajki=%s+1 WHERE id=%s", (row, postid,))
-        cur.execute("INSERT INTO likes(user_id, post_id) VALUES(%s,%s)", (session['login'], postid,))
-        mysql.connection.commit()
-        cur.close()
-        rowapi = table['lajki'] + 1
-        return jsonify({'lajkixd': rowapi})
-    return redirect(url_for('index'))
-
-
-@app.route('/unlike', methods=['POST'])
-def unlike():
-    postid = request.form['postid']
-    cur = mysql.connection.cursor()
-    cur.execute("SELECT * FROM likes WHERE user_id=%s AND post_id=%s", (session['login'], postid,))
-    likes = cur.fetchall()
-    if likes:
-        cur.execute("SELECT * FROM wpisy WHERE id=%s", (postid,))
-        table = cur.fetchone()
-        row = table['lajki']
-        cur.execute("DELETE FROM likes WHERE post_id=%s AND user_id=%s", (postid, session['login'],))
-        cur.execute("UPDATE wpisy SET lajki=%s-1 WHERE id=%s", (row, postid,))
-        mysql.connection.commit()
-        cur.close()
-        rowapi = table['lajki'] - 1
-        return jsonify({'lajkixd': rowapi})
-    return redirect(url_for('index'))
-
+app.register_blueprint(likesystem_blueprint)
 
 app.register_blueprint(wpis_blueprint)
 
