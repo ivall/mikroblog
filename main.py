@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, session, redirect, url_for, flash
 from flask_mysqldb import MySQL
 from blueprints.logout import logout_blueprint
 from blueprints.register import register_blueprint
@@ -11,6 +11,7 @@ from blueprints.removekom import removekom_blueprint
 from blueprints.likesystem import likesystem_blueprint
 from forms import WpisForm
 from errors import page_not_found
+
 
 app = Flask(__name__)
 app.config.from_object('config')
@@ -48,6 +49,37 @@ def popularne():
     likes = cur.fetchall()
     cur.close()
     return render_template('index.html', wpisy=wpisy, komentarze=komentarze, lajki=likes, form=form)
+
+
+@app.route('/edit/<postid>', methods=['GET'])
+def geteditpost(postid):
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT autor, tresc FROM wpisy WHERE id=%s AND autor=%s",(postid,session['login'],))
+    checkWpis = cur.fetchall()
+    if checkWpis:
+        staraTresc = checkWpis[0]['tresc']
+        form = WpisForm()
+        return render_template('edit.html',form=form,postid=postid,staraTresc=staraTresc)
+    flash("Wystąpił błąd")
+    return redirect(url_for('index'))
+
+@app.route('/edit/<postid>', methods=['POST'])
+def editpost(postid):
+    form = WpisForm()
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT autor, tresc FROM wpisy WHERE id=%s AND autor=%s",(postid,session['login'],))
+    checkWpis = cur.fetchall()
+    if checkWpis:
+        if form.validate_on_submit():
+            tresc = form.wpis.data
+            cur.execute("UPDATE wpisy SET tresc=%s WHERE id=%s", (tresc, postid,))
+            mysql.connection.commit()
+            cur.close()
+            return redirect('/wpis/'+postid)
+        flash("Minimalna długość wpisu to 5 znaków, a maksymalna 300.")
+        return redirect(url_for('index'))
+    flash("Wystąpił błąd")
+    return redirect(url_for('index'))
 
 
 app.register_blueprint(likesystem_blueprint)

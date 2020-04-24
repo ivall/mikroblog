@@ -1,9 +1,9 @@
 <div class="card bg-dark mb-3" id="wpis{{ row.id }}">
     <div class="card-header">
         {% if row.autor == "ivall" %}
-        <span style="color: red;" class="autorwpisu{{ row.id }}">{{ row.autor }}</span>
+            <span style="color: red;" class="autorwpisu{{ row.id }}">{{ row.autor }}  </span><a href="/wpis/{{ row.id }}"><time class="timeago" datetime="{{row.data}}"></time></a>
         {% else %}
-            <span class="autorwpisu{{ row.id }}">{{ row.autor }}</span>
+            <span class="autorwpisu{{ row.id }}">{{ row.autor }}  </span><a href="/wpis/{{ row.id }}"><time class="timeago" datetime="{{row.data}}"></time></a>
         {% endif %}
         <div class="float-sm-right">
                 {% if session['login'] %}
@@ -19,9 +19,9 @@
     <div class="card-body">
         <p class="card-text">{{ row.tresc }}</p>
                     {% if session['login'] == row.autor %}
-                    <input type="hidden" name="postid" value="{{ row.id }}">
-                    <button type="submit" class="usunwpis" post_id="{{ row.id }}">Usuń wpis</button>
-            {% endif %}
+                        <button type="submit" class="usunwpis" post_id="{{ row.id }}">Usuń wpis</button>
+                        <a href="/edit/{{ row.id }}" style="color: green; margin-left: 15px;">Edytuj wpis</a>
+                    {% endif %}
             </div>
     <div class="card-footer">
 		{% if session['login'] %}
@@ -31,7 +31,7 @@
         <div class="komentarze komentarze{{ row.id }}">
         {% for krow in komentarze %}
             {% if krow.post_id == row.id %}
-                <div class="komentarz{{ krow.id }}">
+                <div class="komentarz{{ krow.id }} komentarztresc">
                     {% if krow.autor == row.autor %}<b>{{ krow.autor }}</b>:{% else %}{{ krow.autor }}:{% endif %} {{ krow.tresc }}
                     {% if krow.autor == session['login'] %}
                         <span class="usunkomentarz" kom_id="{{ krow.id }}">&times;</span>

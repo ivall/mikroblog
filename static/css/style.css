@@ -1,5 +1,9 @@
+html, body {
+  height: 100%;
+}
 body {
     margin: 0;
+    position: relative;
     background: #1e272e;
     color: white;
 }
@@ -45,6 +49,10 @@ form {
     color: white;
     border: none;
 }
+.komentarz:focus {
+    background-color: #1e272e;
+    color: white;
+}
 .komentarze {
     margin-top: 10px;
 }
@@ -61,13 +69,24 @@ form {
 .usunkomentarz:hover {
     cursor: pointer;
 }
-footer {
-    margin-top: 50px;
-}
 .card {
     max-width: 40rem;
     color: white;
 }
 .autorwpisu {
     text-decoration: underline;
+}
+.timeago {
+    font-size: 11px;
+    position: relative;
+    top: -4px;
+    left: 2px;
+    color: grey;
+}
+.container {
+    min-height: 100%;
+}
+footer {
+    padding: 20px;
+    text-align: center;
 }

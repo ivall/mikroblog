@@ -1,6 +1,8 @@
 from flask import Flask, Blueprint, request, session, redirect, url_for, flash
 from flask_mysqldb import MySQL, MySQLdb
 from forms import WpisForm
+import pytz
+from datetime import datetime
 
 dodajwpis_blueprint = Blueprint('dodajwpis_blueprint', __name__)
 
@@ -16,13 +18,15 @@ def dodajwpis():
         tresc = form.wpis.data
         form.wpis.data = ""
         autor = session['login']
+        tz = pytz.timezone('Europe/Warsaw')
+        actualltime = datetime.now(tz).replace(microsecond=0, tzinfo=None)
         cur = mysql.connection.cursor()
-        cur.execute("INSERT INTO wpisy (tresc, autor) VALUES (%s,%s)", (tresc, autor,))
+        cur.execute("INSERT INTO wpisy (tresc, autor, data) VALUES (%s,%s,%s)", (tresc, autor, actualltime,))
         mysql.connection.commit()
         cur.execute("SELECT id,autor FROM wpisy ORDER BY ID DESC LIMIT 1")
         check = cur.fetchall()
         idwpisu = check[0]['id']
         poprzedniastrona = 'http://%s' % request.host
         return redirect(f'{poprzedniastrona}/wpis/{idwpisu}')
-    flash("Minimalna długość wpisu to 5 znaków, a maksymalna 500.")
+    flash("Minimalna długość wpisu to 5 znaków, a maksymalna 300.")
     return redirect(request.referrer)
