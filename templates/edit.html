@@ -18,11 +18,11 @@
         $("#wpis").val("{{ staraTresc }}");
     });
 </script>
-<form action="{{url_for('editpost',postid=postid)}}" class="dodajwpis" method="post" onsubmit="wpisbtn.disabled = true;">
+<form action="{{url_for('editsystem_blueprint.editpost',postid=postid)}}" class="dodajwpis" method="post" onsubmit="wpisbtn.disabled = true;">
     <div class="form-group">
         {{ form.csrf_token }}
         {{ form.wpis(placeholder="Treść",class_="form-control bg-dark text-white",rows="4") }}
-        <button type="submit" class="btn btn-primary" name="wpisbtn">Edytuj wpis</button>
+        <button type="submit" class="btn btn-primary btn-sm" name="wpisbtn">Edytuj wpis</button>
     </div>
 </form>
 {% include 'footer.html' %}

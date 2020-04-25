@@ -4,14 +4,17 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin-right: 40px;">
     {% if session['login'] %}
     <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-            <a class="nav-link">Witaj, {{ session['login'] }}</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('logout_blueprint.logout') }}">Wyloguj</a>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Witaj, {{ session['login'] }}
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="{{ url_for('settings_blueprint.ustawieniaget') }}">Ustawienia</a>
+              <a class="dropdown-item" href="{{ url_for('logout_blueprint.logout') }}">Wyloguj</a>
+            </div>
         </li>
     </ul>
     {% else %}

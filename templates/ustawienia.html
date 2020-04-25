@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Darmowy, nowoczesny mikroblog, możesz tutaj porozmawiać o wszystkim.">
+    <meta name="Keywords" content="mikroblog, ivall, rozmowy, chat">
+    <title>Mikroblog</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/033e78e466.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+{% include 'navbar.html' %}
+<div class="settings" style="margin-top: 150px;">
+    <form action="{{ url_for('settings_blueprint.zmienemail') }}" method="post">
+        <div class="form-group">
+            {{ formr.csrf_token }}
+            {{ formr.email(class_="form-control settings_change bg-dark",placeholder="Email") }}<br/>
+            <button type="submit" class="btn btn-primary btn-sm" name="changeemail" style="margin-top: 5px;">Zmień email</button>
+        </div>
+    </form>
+    <form action={{ url_for('settings_blueprint.zmienhaslo') }} method="post">
+        <div class="form-group settingspassword">
+            {{ formp.csrf_token }}
+            {{ formp.oldpassword(class_="form-control settings_change changepassword bg-dark",placeholder="Stare hasło") }}<br/>
+            {{ formp.password(class_="form-control settings_change changepassword bg-dark",placeholder="Nowe hasło") }}<br/>
+            <button type="submit" class="btn btn-primary btn-sm changepassword" name="changeemail" style="margin-top: -5px;">Zmień hasło</button>
+        </div>
+    </form>
+</div>

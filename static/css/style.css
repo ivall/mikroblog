@@ -15,7 +15,7 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
 }
-.dodajwpis button {
+.dodajwpisbtn {
     margin-top: 15px;
 }
 .dodajwpis textarea {
@@ -89,4 +89,24 @@ form {
 footer {
     padding: 20px;
     text-align: center;
+}
+.settings_change {
+    display: inline-block;
+    width: 300px;
+    padding: 5px;
+    color: white;
+    border: none;
+}
+.settings_change:focus {
+    color: white;
+}
+.settingspassword {
+    margin-top: 100px;
+}
+.settings {
+    display: flex;
+    justify-content: center;
+}
+.changepassword {
+    margin: 5px 10px 10px 0;
 }

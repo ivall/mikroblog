@@ -17,15 +17,18 @@
 {% with messages = get_flashed_messages() %}
     {% if messages %}
         {% for message in messages %}
-            <div class="alert alert-danger" role="alert">
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
               {{message}}
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
             </div>
         {% endfor %}
     {% endif %}
 {% endwith %}
         {{ form.csrf_token }}
         {{ form.wpis(placeholder="Treść",class_="form-control bg-dark text-white",rows="4") }}
-        <button type="submit" class="btn btn-primary" name="wpisbtn">Dodaj wpis</button>
+        <button type="submit" class="btn btn-primary dodajwpisbtn" name="wpisbtn">Dodaj wpis</button>
     </div>
 </form>
 {% endif %}

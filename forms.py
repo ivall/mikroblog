@@ -14,3 +14,13 @@ class RejestracjaForm(FlaskForm):
     password = PasswordField('password', [validators.DataRequired()])
     recaptcha = RecaptchaField()
 
+
+# Zmiana emaila
+class ChangeEmail(FlaskForm):
+    email = StringField('email', [validators.DataRequired(), validators.email()])
+
+
+# Zmiana hasła
+class ChangePassword(FlaskForm):
+    oldpassword = PasswordField('oldpassword', [validators.DataRequired()])
+    password = PasswordField('password', [validators.DataRequired()])
