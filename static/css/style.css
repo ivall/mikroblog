@@ -110,3 +110,19 @@ footer {
 .changepassword {
     margin: 5px 10px 10px 0;
 }
+.dropdown-menu {
+    padding: 0;
+    margin-left: -43px;
+}
+.dropdown-item {
+    color: white;
+    background-color: #2d3436;
+}
+.dropdown-item:hover {
+    background-color: #1e272e;
+    color: white;
+}
+.datakomentarza {
+    display: inline-block;
+    float: right;
+}

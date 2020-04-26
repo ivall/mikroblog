@@ -1,6 +1,8 @@
 from flask import Flask, Blueprint, session, request, jsonify, abort
 from flask_mysqldb import MySQL
 import validators
+import pytz
+from datetime import datetime
 dodajkomentarz_blueprint = Blueprint('dodajkomentarz_blueprint', __name__)
 
 app = Flask(__name__)
@@ -18,7 +20,9 @@ def dodajkomentarz():
         cur.execute("SELECT id FROM wpisy WHERE id=%s", (post_id,))
         check = cur.fetchone()
         if check:
-            cur.execute("INSERT INTO komentarze (tresc, autor, post_id) VALUES (%s,%s,%s)", (tresc, autor, post_id,))
+            tz = pytz.timezone('Europe/Warsaw')
+            actualltime = datetime.now(tz).replace(microsecond=0, tzinfo=None)
+            cur.execute("INSERT INTO komentarze (tresc, autor, data, post_id) VALUES (%s,%s,%s,%s)", (tresc, autor, actualltime , post_id,))
             mysql.connection.commit()
             cur.execute("SELECT id FROM komentarze WHERE autor=%s ORDER BY id DESC LIMIT 1", (autor,))
             id = cur.fetchone()

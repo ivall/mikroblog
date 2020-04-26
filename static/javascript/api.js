@@ -70,16 +70,26 @@ $(document).ready(function() {
                         kom_id: data.komid,
                         html:'&times;'
                     });
-                if($(".autorwpisu"+post_id).text() === data.autor) {
-                    var div = $('<div />',{
-                        class:'komentarz'+data.komid ,
+                   var time = $('<time />', {
+                       class:'timeago',
+                       html:'chwilę temu'
+                   });
+                   var datakomentarza = $('<div />', {
+                        class:'datakomentarza',
+                        html:time
+                    });
+                if ($(".autorwpisu"+post_id).text() === data.autor) {
+                    var div = $('<div />', {
+                        class:'komentarz'+data.komid,
                         html:'<b>'+data.autor+'</b>: '+data.tresc
                     });
                     $(".komentarze"+post_id).prepend(div);
+                    datakomentarza.appendTo('.komentarz'+data.komid);
                     span.appendTo('.komentarz'+data.komid);
                 }
                 else {
                     $(".komentarze"+post_id).prepend($('<div>', {class: 'komentarz'+data.komid, text: data.autor+": "+data.tresc}));
+                    datakomentarza.appendTo('.komentarz'+data.komid);
                     span.appendTo('.komentarz'+data.komid);
                 }
             },

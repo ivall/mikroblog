@@ -32,7 +32,7 @@
         {% for krow in komentarze %}
             {% if krow.post_id == row.id %}
                 <div class="komentarz{{ krow.id }} komentarztresc">
-                    {% if krow.autor == row.autor %}<b>{{ krow.autor }}</b>:{% else %}{{ krow.autor }}:{% endif %} {{ krow.tresc }}
+                    {% if krow.autor == row.autor %}<b>{{ krow.autor }}</b>:{% else %}{{ krow.autor }}:{% endif %} {{ krow.tresc }}<div class="datakomentarza"><time class="timeago" datetime="{{krow.data}}"></time></div>
                     {% if krow.autor == session['login'] %}
                         <span class="usunkomentarz" kom_id="{{ krow.id }}">&times;</span>
                     {% endif %}<br/>
