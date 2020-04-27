@@ -1,9 +1,9 @@
 <div class="card bg-dark mb-3" id="wpis{{ row.id }}">
     <div class="card-header">
         {% if row.autor == "ivall" %}
-            <span style="color: red;" class="autorwpisu{{ row.id }}">{{ row.autor }}  </span><a href="/wpis/{{ row.id }}"><time class="timeago" datetime="{{row.data}}"></time></a>
+            <a class="autorwpisu{{ row.id }}" href="/profil/{{ row.autor }}" style="color: red;">{{ row.autor }}</a>  <a href="/wpis/{{ row.id }}"><time class="timeago" datetime="{{row.data}}"></time></a>
         {% else %}
-            <span class="autorwpisu{{ row.id }}">{{ row.autor }}  </span><a href="/wpis/{{ row.id }}"><time class="timeago" datetime="{{row.data}}"></time></a>
+            <a class="autorwpisu{{ row.id }}" href="/profil/{{ row.autor }}" style="color: white;">{{ row.autor }}</a>  <a href="/wpis/{{ row.id }}"><time class="timeago" datetime="{{row.data}}"></time></a>
         {% endif %}
         <div class="float-sm-right">
                 {% if session['login'] %}
@@ -32,7 +32,7 @@
         {% for krow in komentarze %}
             {% if krow.post_id == row.id %}
                 <div class="komentarz{{ krow.id }} komentarztresc">
-                    {% if krow.autor == row.autor %}<b>{{ krow.autor }}</b>:{% else %}{{ krow.autor }}:{% endif %} {{ krow.tresc }}<div class="datakomentarza"><time class="timeago" datetime="{{krow.data}}"></time></div>
+                    {% if krow.autor == row.autor %}<a href="/profil/{{ krow.autor }}" style="color: white;"><b>{{ krow.autor }}</b></a>:{% else %}<a href="/profil/{{ krow.autor }}" style="color: white;">{{ krow.autor }}</a>:{% endif %} {{ krow.tresc }}<div class="datakomentarza"><time class="timeago" datetime="{{krow.data}}"></time></div>
                     {% if krow.autor == session['login'] %}
                         <span class="usunkomentarz" kom_id="{{ krow.id }}">&times;</span>
                     {% endif %}<br/>

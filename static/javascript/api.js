@@ -78,7 +78,7 @@ $(document).ready(function() {
                         class:'datakomentarza',
                         html:time
                     });
-                if ($(".autorwpisu"+post_id).text() === data.autor) {
+                if ($.trim($(".autorwpisu"+post_id).text()) === $.trim(data.autor)) {
                     var div = $('<div />', {
                         class:'komentarz'+data.komid,
                         html:'<b>'+data.autor+'</b>: '+data.tresc

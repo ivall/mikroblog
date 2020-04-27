@@ -52,6 +52,27 @@ def popularne():
     return render_template('index.html', wpisy=wpisy, komentarze=komentarze, lajki=likes, form=form)
 
 
+@app.route('/profil/<nick>', methods=['GET'])
+def profil(nick):
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT id FROM users WHERE login=%s",(nick,))
+    checkuser = cur.fetchall()
+    if checkuser:
+        cur.execute("SELECT * FROM wpisy WHERE autor=%s ORDER BY `id` DESC",(nick,))
+        wpisy = cur.fetchall()
+        iloscwpisow = len(list(cur))
+        cur.execute("SELECT * FROM komentarze ORDER BY `id` DESC")
+        komentarze = cur.fetchall()
+        cur.execute("SELECT * FROM komentarze WHERE autor=%s",(nick,))
+        ilosckomentarzy = len(list(cur))
+        cur.execute("SELECT * FROM likes")
+        likes = cur.fetchall()
+        cur.close()
+        return render_template('profil.html', wpisy=wpisy, komentarze=komentarze, lajki=likes, nick=nick, ilosckomentarzy = ilosckomentarzy, iloscwpisow = iloscwpisow)
+    flash("Nie znaleziono użytkownika z takim loginem")
+    return redirect(url_for('index'))
+
+
 app.register_blueprint(settings_blueprint)
 
 app.register_blueprint(editsystem_blueprint)
