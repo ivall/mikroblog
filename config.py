@@ -1,0 +1,11 @@
+SECRET_KEY = "sekretnyklucz"
+RECAPTCHA_USE_SSL = True
+SESSION_COOKIE_SECURE = True
+REMEMBER_COOKIE_SECURE = True
+RECAPTCHA_PUBLIC_KEY = 'publiczny klucz recaptchy'
+RECAPTCHA_PRIVATE_KEY = 'prywatny klucz recaptchy'
+MYSQL_HOST = 'localhost'
+MYSQL_USER = 'root'
+MYSQL_PASSWORD = ''
+MYSQL_DB = 'nazwa bazy'
+MYSQL_CURSORCLASS = 'DictCursor'
