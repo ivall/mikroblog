@@ -12,7 +12,7 @@
 <body>
 {% include 'navbar.html' %}
 {% if session['login'] %}
-<form action="{{ url_for('dodajwpis_blueprint.dodajwpis') }}" class="dodajwpis" method="post" onsubmit="wpisbtn.disabled = true;">
+<form action="{{ url_for('addpost_blueprint.dodajwpis') }}" class="dodajwpis" method="post" onsubmit="wpisbtn.disabled = true;">
     <div class="form-group">
 {% with messages = get_flashed_messages() %}
     {% if messages %}
@@ -41,7 +41,7 @@
     <a class="nav-link {% if request.path == '/popularne' %}active{% endif %}" href="{{ url_for('popularne') }}">Popularne</a>
   </li>
 </ul>
-{% for row in wpisy %}
+{% for row in posts %}
     {% include 'wpis.html' %}
 
 {% endfor %}

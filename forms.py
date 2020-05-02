@@ -3,12 +3,12 @@ from wtforms import StringField, validators, TextAreaField, PasswordField
 
 
 # Dodawanie wpisu
-class WpisForm(FlaskForm):
+class AddPostForm(FlaskForm):
     wpis = TextAreaField('wpis', [validators.DataRequired(), validators.Length(min=5, max=300)])
 
 
 # Rejestracja
-class RejestracjaForm(FlaskForm):
+class RegisterForm(FlaskForm):
     nick = StringField('nick', [validators.DataRequired(), validators.Length(min=4, max=28)])
     email = StringField('email', [validators.DataRequired(), validators.email()])
     password = PasswordField('password', [validators.DataRequired()])

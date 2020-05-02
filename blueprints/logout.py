@@ -1,4 +1,4 @@
-from flask import Flask, session, url_for, redirect
+from flask import session, url_for, redirect
 from flask import Blueprint
 
 

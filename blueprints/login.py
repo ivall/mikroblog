@@ -15,12 +15,10 @@ def login():
     if request.method == 'POST':
         login = request.form['login']
         password = request.form['password'].encode('utf-8')
-
         cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
         cur.execute("SELECT * FROM users WHERE login=%s", (login,))
         user = cur.fetchone()
         cur.close()
-
         try:
             if len(user) > 0:
                 if bcrypt.hashpw(password, user['password'].encode('utf-8')) == user['password'].encode('utf-8'):

@@ -16,7 +16,7 @@ def ustawieniaget():
     if session['login']:
         formr = ChangeEmail()
         formp = ChangePassword()
-        return render_template('ustawienia.html',formr=formr,formp=formp)
+        return render_template('ustawienia.html', formr=formr, formp=formp)
     flash("Wystąpił błąd")
     return redirect(url_for('index'))
 

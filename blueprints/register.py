@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, session, url_for, redirect, flash
-from flask_mysqldb import MySQL, MySQLdb
-from forms import RejestracjaForm
+from flask_mysqldb import MySQL
+from forms import RegisterForm
 import bcrypt
 from flask import Blueprint
 register_blueprint = Blueprint('register_blueprint', __name__)
@@ -12,7 +12,7 @@ mysql = MySQL(app)
 
 @register_blueprint.route('/register', methods=['GET', 'POST'])
 def register():
-    formr = RejestracjaForm()
+    formr = RegisterForm()
     if request.method == 'POST':
         if formr.validate_on_submit():
             login = formr.nick.data.replace(" ", "")
@@ -26,7 +26,6 @@ def register():
                 cur.execute("INSERT INTO users (login, email, password) VALUES (%s,%s,%s)", (login, email, hash_password,))
                 mysql.connection.commit()
                 session['login'] = login
-                session['email'] = email
                 return redirect(url_for('index'))
             flash("Użytkownik z takim loginem już istnieje.")
         flash("Wystąpił błąd z walidacją.")

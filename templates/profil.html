@@ -14,14 +14,14 @@
 <div class="container" style="margin-top: 60px;">
 <h2 style="text-align: center;">Profil użytkownika {{ nick }}</h2>
 <div class="iloscwpisow" style="text-align: center; margin-top: 50px; width: 60%; display: inline-block;">
-    <h3>{{iloscwpisow}}</h3><br/>
-    <h5 style="margin-top: -30px;">{% if iloscwpisow == 0 %}napisanych wpisów{% elif iloscwpisow == 1 %}napisany wpis{% elif iloscwpisow <= 4 %}napisane wpisy{% elif iloscwpisow >= 5 %}napisanych wpisów{% endif %}</h5>
+    <h3>{{countPosts}}</h3><br/>
+    <h5 style="margin-top: -30px;">{% if countPosts == 0 %}napisanych wpisów{% elif countPosts == 1 %}napisany wpis{% elif countPosts <= 4 %}napisane wpisy{% elif countPosts >= 5 %}napisanych wpisów{% endif %}</h5>
 </div>
 <div class="ilosckomentarzy" style="text-align: center; margin-bottom: 50px; display: inline-block;">
-    <h3>{{ilosckomentarzy}}</h3><br/>
-    <h5 style="margin-top: -30px;">{% if ilosckomentarzy == 0 %}napisanych komentarzy{% elif ilosckomentarzy == 1 %}napisany komentarz{% elif ilosckomentarzy <= 4 %}napisane komentarze{% elif ilosckomentarzy >= 5 %}napisanych komentarzy{% endif %}</h5>
+    <h3>{{countComments}}</h3><br/>
+    <h5 style="margin-top: -30px;">{% if countComments == 0 %}napisanych komentarzy{% elif countComments == 1 %}napisany komentarz{% elif countComments <= 4 %}napisane komentarze{% elif countComments >= 5 %}napisanych komentarzy{% endif %}</h5>
 </div>
-{% for row in wpisy %}
+{% for row in posts %}
     {% include 'wpis.html' %}
 {% endfor %}
 </div>

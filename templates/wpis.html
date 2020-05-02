@@ -7,7 +7,7 @@
         {% endif %}
         <div class="float-sm-right">
                 {% if session['login'] %}
-                    {% for lrow in lajki if lrow.post_id == row.id and lrow.user_id == session['login'] %}
+                    {% for lrow in likes if lrow.post_id == row.id and lrow.user_id == session['login'] %}
                         <button id="likebtn{{ row.id }}" class="btn btn-danger btn-sm unlajkbtn" post_id="{{ row.id }}" type="submit">Odlub</button>
                     {% else %}
                         <button id="likebtn{{ row.id }}" class="btn btn-success btn-sm lajkbtn" post_id="{{ row.id }}" type="submit">Polub</button>
@@ -29,7 +29,7 @@
             <button type="submit" class="btn btn-primary btn-sm dodajkomentarz" post_id="{{ row.id }}" style="display: inline-block; margin-top: -5px;">Wyślij</button>
         {% endif %}
         <div class="komentarze komentarze{{ row.id }}">
-        {% for krow in komentarze %}
+        {% for krow in comments %}
             {% if krow.post_id == row.id %}
                 <div class="komentarz{{ krow.id }} komentarztresc">
                     {% if krow.autor == row.autor %}<a href="/profil/{{ krow.autor }}" style="color: white;"><b>{{ krow.autor }}</b></a>:{% else %}<a href="/profil/{{ krow.autor }}" style="color: white;">{{ krow.autor }}</a>:{% endif %} {{ krow.tresc }}<div class="datakomentarza"><time class="timeago" datetime="{{krow.data}}"></time></div>

@@ -1,17 +1,17 @@
-from flask import Flask, render_template, request, session, redirect, url_for, flash
+from flask import Flask, render_template, redirect, url_for, flash
 from flask_mysqldb import MySQL
 from blueprints.logout import logout_blueprint
 from blueprints.register import register_blueprint
 from blueprints.login import login_blueprint
-from blueprints.dodajkomentarz import dodajkomentarz_blueprint
-from blueprints.dodajwpis import dodajwpis_blueprint
+from blueprints.addcomment import addcomment_blueprint
+from blueprints.addpost import addpost_blueprint
 from blueprints.remove import remove_blueprint
-from blueprints.wpis import wpis_blueprint
-from blueprints.removekom import removekom_blueprint
+from blueprints.post import post_blueprint
+from blueprints.removecomment import removecomment_blueprint
 from blueprints.likesystem import likesystem_blueprint
 from blueprints.editsystem import editsystem_blueprint
 from blueprints.settings import settings_blueprint
-from forms import WpisForm
+from forms import AddPostForm
 from errors import page_not_found
 
 app = Flask(__name__)
@@ -26,7 +26,7 @@ app.jinja_env.lstrip_blocks = True
 
 @app.route('/', methods=['GET'])
 def index():
-    form = WpisForm()
+    form = AddPostForm()
     cur = mysql.connection.cursor()
     cur.execute("SELECT * FROM wpisy ORDER BY `id` DESC")
     posts = cur.fetchall()
@@ -35,12 +35,12 @@ def index():
     cur.execute("SELECT * FROM likes")
     likes = cur.fetchall()
     cur.close()
-    return render_template('index.html', wpisy=posts, komentarze=comments, lajki=likes, form=form)
+    return render_template('index.html', posts=posts, comments=comments, likes=likes, form=form)
 
 
 @app.route('/popularne', methods=['GET'])
 def popularne():
-    form = WpisForm()
+    form = AddPostForm()
     cur = mysql.connection.cursor()
     cur.execute("SELECT * FROM wpisy ORDER BY `lajki` DESC")
     posts = cur.fetchall()
@@ -49,7 +49,7 @@ def popularne():
     cur.execute("SELECT * FROM likes")
     likes = cur.fetchall()
     cur.close()
-    return render_template('index.html', wpisy=posts, komentarze=comments, lajki=likes, form=form)
+    return render_template('index.html', posts=posts, comments=comments, likes=likes, form=form)
 
 
 @app.route('/profil/<nick>', methods=['GET'])
@@ -68,7 +68,7 @@ def profil(nick):
         cur.execute("SELECT * FROM likes")
         likes = cur.fetchall()
         cur.close()
-        return render_template('profil.html', wpisy=posts, komentarze=comments, lajki=likes, nick=nick, ilosckomentarzy = countComments, iloscwpisow = countPosts)
+        return render_template('profil.html', posts=posts, comments=comments, likes=likes, nick=nick, countComments=countComments, countPosts=countPosts)
     flash("Nie znaleziono użytkownika z takim loginem")
     return redirect(url_for('index'))
 
@@ -79,13 +79,13 @@ app.register_blueprint(editsystem_blueprint)
 
 app.register_blueprint(likesystem_blueprint)
 
-app.register_blueprint(wpis_blueprint)
+app.register_blueprint(post_blueprint)
 
 app.register_blueprint(remove_blueprint)
 
-app.register_blueprint(dodajwpis_blueprint)
+app.register_blueprint(addpost_blueprint)
 
-app.register_blueprint(dodajkomentarz_blueprint)
+app.register_blueprint(addcomment_blueprint)
 
 app.register_blueprint(register_blueprint)
 
@@ -93,7 +93,7 @@ app.register_blueprint(login_blueprint)
 
 app.register_blueprint(logout_blueprint)
 
-app.register_blueprint(removekom_blueprint)
+app.register_blueprint(removecomment_blueprint)
 
 if __name__ == '__main__':
     app.run()
