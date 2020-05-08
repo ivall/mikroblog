@@ -1,0 +1,41 @@
+html, body {
+    height: 100%;
+}
+body {
+    margin: 0;
+    background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url(/static/images/background.jpg) fixed no-repeat;
+    background: -webkit-linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url(/static/images/background.jpg) fixed no-repeat;
+    background-size: cover;
+    color: white;
+}
+.logowanie {
+    width: 300px;
+    height: 500px;
+    position: fixed;
+    top: 60%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+.rejestracja {
+    width: 300px;
+    height: 500px;
+    position: fixed;
+    top: 60%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+.logowanie button {
+    margin-top: 15px;
+}
+.rejestracja button {
+    margin-top: 15px;
+}
+.recaptcha {
+    margin-top: 25px;
+    text-align: center;
+}
+.g-recaptcha {
+    display: inline-block;
+}
