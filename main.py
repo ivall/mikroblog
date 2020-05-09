@@ -13,6 +13,7 @@ from blueprints.editsystem import editsystem_blueprint
 from blueprints.settings import settings_blueprint
 from forms import AddPostForm
 from errors import page_not_found
+import urllib.parse
 
 
 app = Flask(__name__)
