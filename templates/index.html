@@ -33,15 +33,18 @@
 </form>
 {% endif %}
 <div class="container" style="{% if session['login'] %}margin-top: -50px;{% else %}margin-top: 80px;{% endif %}">
-{% if request.url_rule.endpoint == 'index' or 'populary' %}
-<ul class="nav nav-pills justify-content-center">
-  <li class="nav-item sort">
-    <a class="nav-link {% if request.url_rule.endpoint == 'index' %}active{% endif %}" href="{{ url_for('index') }}">Ostatnie</a>
-  </li>
-  <li class="nav-item sort">
-    <a class="nav-link {% if request.url_rule.endpoint == 'populary' %}active{% endif %}" href="{{ url_for('populary') }}">Popularne</a>
-  </li>
-</ul>
+{% if request.url_rule.endpoint == 'index' or request.url_rule.endpoint == 'populary' %}
+    <ul class="nav nav-pills justify-content-center">
+      <li class="nav-item sort">
+        <a class="nav-link {% if request.url_rule.endpoint == 'index' %}active{% endif %}" href="{{ url_for('index') }}">Ostatnie</a>
+      </li>
+      <li class="nav-item sort">
+        <a class="nav-link {% if request.url_rule.endpoint == 'populary' %}active{% endif %}" href="{{ url_for('populary') }}">Popularne</a>
+      </li>
+    </ul>
+{% endif %}
+{% if request.url_rule.endpoint == 'tag' %}
+    <h4 class="text-center">#{{ tag }}</h4>
 {% endif %}
 {% for row in posts %}
     {% include 'wpis.html' %}

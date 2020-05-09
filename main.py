@@ -91,7 +91,7 @@ def tag(tagname):
         cur.execute("SELECT * FROM likes WHERE post_id IN %s", (posty,))
         likes = cur.fetchall()
         cur.close()
-        return render_template('index.html', posts=posts, comments=comments, likes=likes, form=form)
+        return render_template('index.html', posts=posts, comments=comments, likes=likes, form=form, tag=tagname)
     flash("Taki tag jeszcze nie istnieje")
     return redirect(url_for('index'))
 

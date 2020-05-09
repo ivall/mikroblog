@@ -73,4 +73,10 @@ $(document).ready(function() {
         // Echo link
         $(this).html(replaced_text);
     });
+    $('.card-text').each(function(){
+        var str = $(this).html();
+        var re = /(#[a-z0-9][a-z0-9\-_]*)/ig;
+        str = str.replace(re, function(x) { return '<a href="/tag/'+x.substring(1, x.length)+'">' + x + '</a> '; });
+        $(this).html(str);
+    });
 });

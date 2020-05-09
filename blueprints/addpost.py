@@ -21,6 +21,14 @@ def dodajwpis():
         cur = mysql.connection.cursor()
         cur.execute("INSERT INTO wpisy (tresc, autor, data) VALUES (%s,%s,%s)", (content, author, actualtime,))
         mysql.connection.commit()
+        for word in content.split():
+            if word[0] == "#":
+                wordWithoutHashtag = word.lstrip(word[0])
+                cur.execute("SELECT id FROM wpisy WHERE autor=%s ORDER BY id DESC LIMIT 1", (session['login'],))
+                post_id = cur.fetchone()
+                post_id = post_id['id']
+                cur.execute("INSERT INTO tags (tag, post_id) VALUES (%s,%s)", (wordWithoutHashtag, post_id,))
+                mysql.connection.commit()
         cur.execute("SELECT id,autor FROM wpisy ORDER BY ID DESC LIMIT 1")
         check = cur.fetchall()
         post_id = check[0]['id']
