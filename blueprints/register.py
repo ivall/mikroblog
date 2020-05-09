@@ -39,3 +39,4 @@ def register():
         return redirect(url_for('index'))
     else:
         return render_template('register.html', formr=formr)
+
