@@ -23,7 +23,7 @@ def dodajwpis():
         mysql.connection.commit()
         for word in content.split():
             if word[0] == "#":
-                wordWithoutHashtag = word.lstrip(word[0])
+                wordWithoutHashtag = word.lstrip(word[0]).lower()
                 cur.execute("SELECT id FROM wpisy WHERE autor=%s ORDER BY id DESC LIMIT 1", (session['login'],))
                 post_id = cur.fetchone()
                 post_id = post_id['id']
