@@ -45,6 +45,15 @@
 {% endif %}
 {% if request.url_rule.endpoint == 'tag' %}
     <h4 class="text-center">#{{ tag }}</h4>
+    {% if session['login'] %}
+        <div class="taglike-container">
+            {% for trow in follows if trow.tag == tag and trow.user == session['login'] %}
+                <button id="odlubtag}" class="btn btn-danger btn-sm unlajktag" tag="{{ tag }}" type="submit">Przestań obserwować</button>
+                {% else %}
+                <button id="polubtag" class="btn btn-success btn-sm lajktag" tag="{{ tag }}" type="submit">Obserwuj</button>
+            {% endfor %}
+        </div>
+    {% endif %}
 {% endif %}
 {% for row in posts %}
     {% include 'wpis.html' %}

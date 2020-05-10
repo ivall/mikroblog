@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, flash
+from flask import Flask, render_template, redirect, url_for, flash, session
 from flask_mysqldb import MySQL
 from blueprints.logout import logout_blueprint
 from blueprints.register import register_blueprint
@@ -11,6 +11,7 @@ from blueprints.remove_comment import remove_comment_blueprint
 from blueprints.likesystem import likesystem_blueprint
 from blueprints.editsystem import editsystem_blueprint
 from blueprints.settings import settings_blueprint
+from blueprints.follows import follows_blueprint
 from forms import AddPostForm
 from errors import page_not_found
 
@@ -90,11 +91,14 @@ def tag(tagname):
         comments = cur.fetchall()
         cur.execute("SELECT * FROM likes WHERE post_id IN %s", (list_posts,))
         likes = cur.fetchall()
+        cur.execute("SELECT  * FROM obserwowanetagi")
+        follows = cur.fetchall()
         cur.close()
-        return render_template('index.html', posts=posts, comments=comments, likes=likes, form=form, tag=tagname)
+        return render_template('index.html', posts=posts, comments=comments, likes=likes, form=form, tag=tagname, follows=follows)
     flash("Taki tag jeszcze nie istnieje")
     return redirect(url_for('index'))
 
+app.register_blueprint(follows_blueprint)
 
 app.register_blueprint(settings_blueprint)
 

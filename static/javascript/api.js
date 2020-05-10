@@ -26,7 +26,34 @@ $(document).ready(function() {
                 $('.likes' + post_id).text(data.likes);
             }
         });
+    });  //ODTAD ##################################################################
+    $(document).on("click", ".lajktag", function() {
+        var tag = $(this).attr('tag');
+        var $btn = $(this);
+        $.ajax({
+            url : '/obserwuj',
+            type : 'POST',
+            data : { tag : tag },
+        success: function(data) {
+            $btn.removeClass('btn btn-success btn-sm lajktag').addClass('btn btn-danger btn-sm unlajktag');
+            $btn.text("Przestań obserwować");
+        }
+        });
     });
+    $(document).on("click", ".unlajktag", function() {
+        var tag = $(this).attr('tag');
+        var $btn = $(this);
+        $.ajax({
+            url : '/przestan_obserwowac',
+            type : 'POST',
+            data : { tag : tag },
+            success: function(data) {
+                $btn.removeClass('btn btn-danger btn-sm unlajktag').addClass('btn btn-success btn-sm lajktag');
+                $btn.text("Obserwuj");
+            }
+        });
+    });
+    ////DOTAD ##################################################################
     $(document).on("click", ".usunwpis", function() {
         var post_id = $(this).attr('post_id');
         $.ajax({
