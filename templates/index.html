@@ -12,7 +12,7 @@
 <body>
 {% include 'navbar.html' %}
 {% if session['login'] %}
-<form action="{{ url_for('addpost_blueprint.dodajwpis') }}" class="dodajwpis" method="post" onsubmit="wpisbtn.disabled = true;">
+<form action="{{ url_for('add_post_blueprint.dodajwpis') }}" class="dodajwpis" method="post" onsubmit="wpisbtn.disabled = true;">
     <div class="form-group">
 {% with messages = get_flashed_messages() %}
     {% if messages %}

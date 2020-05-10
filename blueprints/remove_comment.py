@@ -1,15 +1,15 @@
 from flask import Flask, request, session, redirect, abort
 from flask_mysqldb import MySQL
 from flask import Blueprint
-removecomment_blueprint = Blueprint('removecomment_blueprint', __name__)
+remove_comment_blueprint = Blueprint('remove_comment_blueprint', __name__)
 
 app = Flask(__name__)
 app.config.from_object('config')
 mysql = MySQL(app)
 
 
-@removecomment_blueprint.route('/removekom', methods=['POST'])
-def removekom():
+@remove_comment_blueprint.route('/removekom', methods=['POST'])
+def remove_comment():
     comment_id = request.form['kom_id']
     cur = mysql.connection.cursor()
     cur.execute("SELECT * FROM komentarze WHERE id=%s AND autor=%s", (comment_id, session['login'],))

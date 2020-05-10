@@ -5,10 +5,10 @@
         {% if row.autor == "ivall" %}
             <a class="autorwpisu{{ row.id }}" href="/profil/{{ row.autor }}" style="color: red;">{{ row.autor }}</a><br/> <a href="/wpis/{{ row.id }}"><time class="timeago" datetime="{{row.data}}"></time></a>
         {% else %}
-            <a class="autorwpisu{{ row.id }}" href="/profil/{{ row.autor }}" style="color: white;">{{ row.autor }}</a><br/>  <a href="/wpis/{{ row.id }}"><time class="timeago" datetime="{{row.data}}"></time></a>
+            <a class="autorwpisu{{ row.id }} text-white" href="/profil/{{ row.autor }}">{{ row.autor }}</a><br/>  <a href="/wpis/{{ row.id }}"><time class="timeago" datetime="{{row.data}}"></time></a>
         {% endif %}
     </div>
-        <div class="float-sm-right" style="display: inline-block;">
+        <div class="float-sm-right d-inline-block float-right">
                 {% if session['login'] %}
                     {% for lrow in likes if lrow.post_id == row.id and lrow.user_id == session['login'] %}
                         <button id="likebtn{{ row.id }}" class="btn btn-danger btn-sm unlajkbtn" post_id="{{ row.id }}" type="submit">Odlub</button>
@@ -16,7 +16,7 @@
                         <button id="likebtn{{ row.id }}" class="btn btn-success btn-sm lajkbtn" post_id="{{ row.id }}" type="submit">Polub</button>
                     {% endfor %}
                 {% endif %}
-            <i class="fas fa-thumbs-up" style="display:inline-block;"></i> <div class="likes{{ row.id }}" style="display: inline-block;">{{ row.lajki }}</div>
+            <i class="fas fa-thumbs-up" style="display:inline-block;"></i> <div class="likes{{ row.id }} d-inline-block">{{ row.lajki }}</div>
         </div>
     </div>
     <div class="card-body">

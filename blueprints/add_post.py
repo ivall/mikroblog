@@ -3,14 +3,14 @@ from flask_mysqldb import MySQL
 from forms import AddPostForm
 from functions import getActualTime
 
-addpost_blueprint = Blueprint('addpost_blueprint', __name__)
+add_post_blueprint = Blueprint('add_post_blueprint', __name__)
 
 app = Flask(__name__)
 app.config.from_object('config')
 mysql = MySQL(app)
 
 
-@addpost_blueprint.route('/dodajwpis', methods=['POST'])
+@add_post_blueprint.route('/dodajwpis', methods=['POST'])
 def dodajwpis():
     form = AddPostForm()
     if form.validate_on_submit():

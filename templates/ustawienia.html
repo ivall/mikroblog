@@ -11,7 +11,7 @@
 </head>
 <body>
 {% include 'navbar.html' %}
-<div class="settings" style="margin-top: 150px;">
+<div class="settings" style="margin-top: 100px;">
     <form action="{{ url_for('settings_blueprint.zmienemail') }}" method="post">
         <div class="form-group">
             {{ formr.csrf_token }}

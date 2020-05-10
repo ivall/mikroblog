@@ -61,7 +61,7 @@ $(document).ready(function() {
 
         $.ajax({
             type: "POST",
-            url: "/dodajkomentarz",
+            url: "/dodaj_komentarz",
             data: { post_id : post_id, inputvalue : inputvalue },
             success: function(data) {
                 $("#komentarz"+post_id).val("");
@@ -82,14 +82,18 @@ $(document).ready(function() {
                 if ($.trim($(".autorwpisu"+post_id).text()) === $.trim(data.autor)) {
                     var div = $('<div />', {
                         class:'komentarz'+data.komid,
-                        html:'<b>'+data.autor+'</b>: '+tresc
+                        html:'<a href="/profil/'+data.autor+'" style="color: white;"><b>'+data.autor+'</b></a>: '+tresc
                     });
                     $(".komentarze"+post_id).prepend(div);
                     datakomentarza.appendTo('.komentarz'+data.komid);
                     span.appendTo('.komentarz'+data.komid);
                 }
                 else {
-                    $(".komentarze"+post_id).prepend($('<div>', {class: 'komentarz'+data.komid, text: data.autor+": "+tresc}));
+                    var not_author = $('<div />', {
+                        class:'komentarz'+data.komid,
+                        html:'<a href="/profil/'+data.autor+'" style="color: white;">'+data.autor+'</a>: '+tresc
+                    });
+                    $(".komentarze"+post_id).prepend(not_author);
                     datakomentarza.appendTo('.komentarz'+data.komid);
                     span.appendTo('.komentarz'+data.komid);
                 }

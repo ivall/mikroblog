@@ -99,11 +99,8 @@ footer {
 .settings_change:focus {
     color: white;
 }
-.settingspassword {
-    margin-top: 100px;
-}
 .settings {
-    display: flex;
+    display: grid;
     justify-content: center;
 }
 .changepassword {
@@ -128,4 +125,18 @@ footer {
 img {
     margin-top: -48px;
     margin-right: 3px;
+}
+.statistics {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 25px;
+}
+.statistics > div {
+    padding: 15px;
+}
+@media (max-width: 500px) {
+  .dodajwpis {
+      width: 95%;
+  }
 }
