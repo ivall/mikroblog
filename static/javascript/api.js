@@ -26,7 +26,7 @@ $(document).ready(function() {
                 $('.likes' + post_id).text(data.likes);
             }
         });
-    });  //ODTAD ##################################################################
+    });
     $(document).on("click", ".lajktag", function() {
         var tag = $(this).attr('tag');
         var $btn = $(this);
@@ -53,7 +53,6 @@ $(document).ready(function() {
             }
         });
     });
-    ////DOTAD ##################################################################
     $(document).on("click", ".usunwpis", function() {
         var post_id = $(this).attr('post_id');
         $.ajax({

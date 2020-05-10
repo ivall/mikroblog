@@ -15,7 +15,7 @@ def follows():
     id_of_posts = []
     form = AddPostForm()
     cur = mysql.connection.cursor()
-    cur.execute("SELECT tag FROM obserwowaneTagi WHERE user=%s",(session['login'],))
+    cur.execute("SELECT tag FROM obserwowanetagi WHERE user=%s",(session['login'],))
     tags = cur.fetchall()
     for tag in tags:
         tags_list.append(tag['tag'])
