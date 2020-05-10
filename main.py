@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, flash, session
+from flask import Flask, render_template, redirect, url_for, flash, session, jsonify
 from flask_mysqldb import MySQL
 from blueprints.logout import logout_blueprint
 from blueprints.register import register_blueprint
@@ -14,6 +14,7 @@ from blueprints.settings import settings_blueprint
 from blueprints.follows import follows_blueprint
 from forms import AddPostForm
 from errors import page_not_found
+from errors import method_not_allowed
 
 
 app = Flask(__name__)
@@ -21,10 +22,10 @@ app.config.from_object('config')
 mysql = MySQL(app)
 
 app.register_error_handler(404, page_not_found)
+app.register_error_handler(405, method_not_allowed)
 
 app.jinja_env.trim_blocks = True
 app.jinja_env.lstrip_blocks = True
-
 
 @app.route('/', methods=['GET'])
 def index():

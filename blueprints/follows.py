@@ -11,31 +11,33 @@ mysql = MySQL(app)
 
 @follows_blueprint.route('/obserwowane', methods=['GET'])
 def follows():
-    tags_list = []
-    id_of_posts = []
-    form = AddPostForm()
-    cur = mysql.connection.cursor()
-    cur.execute("SELECT tag FROM obserwowanetagi WHERE user=%s",(session['login'],))
-    tags = cur.fetchall()
-    if tags:
-        for tag in tags:
-            tags_list.append(tag['tag'])
-        cur.execute("SELECT * FROM tags WHERE tag IN %s",(tags_list,))
-        posts_id = cur.fetchall()
-        if posts_id:
-            for post_id in posts_id:
-                id_of_posts.append(post_id['post_id'])
-            cur.execute("SELECT * FROM wpisy WHERE id IN %s ORDER BY `id` DESC",(id_of_posts,))
-            posts = cur.fetchall()
-            cur.execute("SELECT * FROM komentarze WHERE post_id IN %s ORDER BY `id` DESC",(id_of_posts,))
-            comments = cur.fetchall()
-            cur.execute("SELECT * FROM likes WHERE post_id IN %s",(id_of_posts,))
-            likes = cur.fetchall()
-            cur.close()
-            return render_template('index.html', posts=posts, comments=comments, likes=likes, form=form)
+    if 'login' in session:
+        tags_list = []
+        id_of_posts = []
+        form = AddPostForm()
+        cur = mysql.connection.cursor()
+        cur.execute("SELECT tag FROM obserwowanetagi WHERE user=%s",(session['login'],))
+        tags = cur.fetchall()
+        if tags:
+            for tag in tags:
+                tags_list.append(tag['tag'])
+            cur.execute("SELECT * FROM tags WHERE tag IN %s",(tags_list,))
+            posts_id = cur.fetchall()
+            if posts_id:
+                for post_id in posts_id:
+                    id_of_posts.append(post_id['post_id'])
+                cur.execute("SELECT * FROM wpisy WHERE id IN %s ORDER BY `id` DESC",(id_of_posts,))
+                posts = cur.fetchall()
+                cur.execute("SELECT * FROM komentarze WHERE post_id IN %s ORDER BY `id` DESC",(id_of_posts,))
+                comments = cur.fetchall()
+                cur.execute("SELECT * FROM likes WHERE post_id IN %s",(id_of_posts,))
+                likes = cur.fetchall()
+                cur.close()
+                return render_template('index.html', posts=posts, comments=comments, likes=likes, form=form)
+            flash("Jeszcze nic nie obserwujesz")
+            return redirect(url_for('index'))
         flash("Jeszcze nic nie obserwujesz")
         return redirect(url_for('index'))
-    flash("Jeszcze nic nie obserwujesz")
     return redirect(url_for('index'))
 
 

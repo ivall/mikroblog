@@ -13,12 +13,11 @@ mysql = MySQL(app)
 
 @settings_blueprint.route('/ustawienia', methods=['GET'])
 def ustawieniaget():
-    if session['login']:
+    if 'login' in session:
         formr = ChangeEmail()
         formp = ChangePassword()
         return render_template('ustawienia.html', formr=formr, formp=formp)
-    else:
-        return redirect(url_for('index'))
+    return redirect(url_for('index'))
 
 
 @settings_blueprint.route('/zmienemail', methods=['POST'])
