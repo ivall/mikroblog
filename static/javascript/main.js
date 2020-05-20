@@ -80,3 +80,8 @@ $(document).ready(function() {
         $(this).html(str);
     });
 });
+
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip();
+});
+

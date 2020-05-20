@@ -146,3 +146,22 @@ img {
     margin-bottom: 15px;
     margin-left: 12px;
 }
+#likesModal {
+    color: #fff;
+}
+.likes-modal-body {
+    padding: 15px;
+}
+.number-of-likes:hover {
+    cursor: pointer;
+}
+.modal-header {
+    border-bottom: 1px solid #505254;
+}
+.close span {
+    text-shadow: none;
+    color: white;
+}
+.close span:hover {
+    color: white;
+}

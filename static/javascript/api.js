@@ -129,4 +129,16 @@ $(document).ready(function() {
             }
         });
     });
+    $(document).on("click", ".number-of-likes", function() {
+        var post_id = $(this).attr('post-id');
+        $("#likesModal").modal("show");
+        $.ajax({
+            url : '/likes',
+            type : 'POST',
+            data : { post_id : post_id },
+            success: function(data) {
+                $('.likes-modal-body').text(data.likes);
+            }
+        });
+    });
 });

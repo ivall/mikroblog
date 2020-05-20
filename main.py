@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, flash, session, jsonify
+from flask import Flask, render_template, redirect, url_for, flash, session, jsonify, request
 from flask_mysqldb import MySQL
 from blueprints.logout import logout_blueprint
 from blueprints.register import register_blueprint
@@ -98,6 +98,22 @@ def tag(tagname):
         return render_template('index.html', posts=posts, comments=comments, likes=likes, form=form, tag=tagname, follows=follows)
     flash("Taki tag jeszcze nie istnieje")
     return redirect(url_for('index'))
+
+
+@app.route('/likes', methods=['POST'])
+def likes():
+    users = []
+    post_id = request.form['post_id']
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT user_id FROM likes WHERE post_id=%s", (post_id,))
+    likes = cur.fetchall()
+    if likes:
+        for x in likes:
+            #  users.append('<a href="/profil/'+x['user_id']+'"'+'>'+x['user_id']+'</a>')
+            users.append(x['user_id'])
+        return jsonify({'likes': ", ".join(users)})
+    return jsonify({'likes': 'Nikt jeszcze nie polubił tego wpisu'})
+
 
 app.register_blueprint(follows_blueprint)
 

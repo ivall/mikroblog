@@ -11,7 +11,7 @@ mysql = MySQL(app)
 
 
 @add_post_blueprint.route('/dodajwpis', methods=['POST'])
-def dodajwpis():
+def add_post():
     form = AddPostForm()
     if form.validate_on_submit():
         content = form.wpis.data
@@ -23,11 +23,11 @@ def dodajwpis():
         mysql.connection.commit()
         for word in content.split():
             if word[0] == "#":
-                wordWithoutHashtag = word.lstrip(word[0]).lower()
+                word_without_hashtag = word.lstrip(word[0]).lower()
                 cur.execute("SELECT id FROM wpisy WHERE autor=%s ORDER BY id DESC LIMIT 1", (session['login'],))
                 post_id = cur.fetchone()
                 post_id = post_id['id']
-                cur.execute("INSERT INTO tags (tag, post_id) VALUES (%s,%s)", (wordWithoutHashtag, post_id,))
+                cur.execute("INSERT INTO tags (tag, post_id) VALUES (%s,%s)", (word_without_hashtag, post_id,))
                 mysql.connection.commit()
         cur.execute("SELECT id,autor FROM wpisy ORDER BY ID DESC LIMIT 1")
         check = cur.fetchall()

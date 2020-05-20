@@ -26,6 +26,8 @@ def register():
                 password = formr.password.data.encode('utf-8')
                 hash_password = bcrypt.hashpw(password, bcrypt.gensalt())
                 login = login.replace("/", "")
+                login = login.replace("<", "")
+                login = login.replace(">", "")
                 if len(login) > 4:
                     cur.execute("INSERT INTO users (login, email, password) VALUES (%s,%s,%s)", (login, email, hash_password,))
                     mysql.connection.commit()

@@ -13,10 +13,10 @@
                     {% for lrow in likes if lrow.post_id == row.id and lrow.user_id == session['login'] %}
                         <button id="likebtn{{ row.id }}" class="btn btn-danger btn-sm unlajkbtn" post_id="{{ row.id }}" type="submit">Odlub</button>
                     {% else %}
-                        <button id="likebtn{{ row.id }}" class="btn btn-success btn-sm lajkbtn" post_id="{{ row.id }}" type="submit">Polub</button>
+                        <button id="likebtn{{ row.id }}" class="btn btn-success btn-sm lajkbtn" post_id="{{ row.id }}" type="submit" >Polub</button>
                     {% endfor %}
                 {% endif %}
-            <i class="fas fa-thumbs-up" style="display:inline-block;"></i> <div class="likes{{ row.id }} d-inline-block">{{ row.lajki }}</div>
+            <i class="fas fa-thumbs-up" style="display:inline-block;"></i> <div class="likes{{ row.id }} d-inline-block number-of-likes" post-id="{{ row.id }}">{{ row.lajki }}</div>
         </div>
     </div>
     <div class="card-body">
