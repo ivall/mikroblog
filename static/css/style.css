@@ -165,3 +165,6 @@ img {
 .close span:hover {
     color: white;
 }
+.card-text .more-text{
+        display: none;
+}

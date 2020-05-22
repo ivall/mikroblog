@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, flash, session, jsonify, request
+from flask import Flask, render_template, redirect, url_for, flash, jsonify, request
 from flask_mysqldb import MySQL
 from blueprints.logout import logout_blueprint
 from blueprints.register import register_blueprint

@@ -20,7 +20,7 @@
         </div>
     </div>
     <div class="card-body">
-        <p class="card-text">{{ row.tresc }}</p>
+        <p class="card-text" style="white-space: pre-wrap;">{{ row.tresc }}</p>
                     {% if session['login'] == row.autor %}
                         <button type="submit" class="usunwpis" post_id="{{ row.id }}">Usuń wpis</button>
                         <a href="/edit/{{ row.id }}" style="color: green; margin-left: 15px;">Edytuj wpis</a>
