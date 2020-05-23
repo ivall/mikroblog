@@ -13,7 +13,7 @@
 {% include 'navbar.html' %}
 {% include 'likes-modal.html' %}
 {% if session['login'] %}
-<form action="{{ url_for('add_post_blueprint.add_post') }}" class="dodajwpis" method="post" onsubmit="wpisbtn.disabled = true;">
+<form action="{{ url_for('add_post_blueprint.add_post') }}" class="dodajwpis" method="post" onsubmit="wpisbtn.disabled = true;" enctype="multipart/form-data">
     <div class="form-group">
 {% with messages = get_flashed_messages() %}
     {% if messages %}
@@ -29,6 +29,7 @@
 {% endwith %}
         {{ form.csrf_token }}
         {{ form.wpis(placeholder="Treść",class_="form-control bg-dark text-white",rows="4") }}
+        <input type=file name=file accept="image/*" style="margin-top: 8px;"><br/>
         <button type="submit" class="btn btn-primary dodajwpisbtn" name="wpisbtn">Dodaj wpis</button>
     </div>
 </form>

@@ -13,15 +13,10 @@
 <body>
 
 {% include 'navbar.html' %}
-<script>
-    $( document ).ready(function() {
-        $("#wpis").val("{{ staraTresc }}");
-    });
-</script>
 <form action="{{url_for('editsystem_blueprint.editpost',postid=postid)}}" class="dodajwpis" method="post" onsubmit="wpisbtn.disabled = true;">
     <div class="form-group">
         {{ form.csrf_token }}
-        {{ form.wpis(placeholder="Treść",class_="form-control bg-dark text-white",rows="4") }}
+        {{ form.wpis(placeholder="Treść",class_="form-control bg-dark text-white",rows="6",value=staraTresc) }}
         <button type="submit" class="btn btn-primary btn-sm" name="wpisbtn">Edytuj wpis</button>
     </div>
 </form>

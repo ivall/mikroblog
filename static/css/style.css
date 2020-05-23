@@ -9,7 +9,7 @@ body {
 }
 .dodajwpis {
     color: white;
-    width: 500px;
+    width: 600px;
     position: relative;
     margin-top: 200px;
     left: 50%;
@@ -25,10 +25,6 @@ body {
     color: white;
     border: none;
 }
-.card {
-    margin: 0 auto;
-}
-
 .usunwpis {
     border:none;
     outline:none;
@@ -41,7 +37,7 @@ form {
     margin: 0;
 }
 .komentarz {
-    width: 250px;
+    width: 300px;
     padding: 5px;
     margin-top: 10px;
     display: inline-block;
@@ -70,8 +66,9 @@ form {
     cursor: pointer;
 }
 .card {
-    max-width: 40rem;
+    max-width: 45rem;
     color: white;
+    margin: 0 auto;
 }
 .autorwpisu {
     text-decoration: underline;
@@ -84,10 +81,6 @@ form {
 }
 .container {
     min-height: 100%;
-}
-footer {
-    padding: 20px;
-    text-align: center;
 }
 .settings_change {
     display: inline-block;
@@ -122,7 +115,7 @@ footer {
     display: inline-block;
     float: right;
 }
-img {
+.imgavatar {
     margin-top: -48px;
     margin-right: 3px;
 }

@@ -86,7 +86,7 @@ $(function () {
 });
 
 $(document).ready(function(){
-	var maxLength = 80;
+	var maxLength = 150;
 	$(".card-text").each(function(){
 		var myStr = $(this).text();
 		if($.trim(myStr).length > maxLength){

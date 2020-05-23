@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm, RecaptchaField
-from wtforms import StringField, validators, TextAreaField, PasswordField
+from wtforms import StringField, validators, TextAreaField, PasswordField, FileField
 
 
 # Dodawanie wpisu
