@@ -125,7 +125,7 @@ $(document).ready(function() {
                 }
             },
             error: function() {
-                alert("Wystąpił błąd, minimalna długość komentarza to 2 znaki, a maksymalna 50 znaków");
+                alert("Wystąpił błąd, minimalna długość komentarza to 2 znaki, a maksymalna 75 znaków");
             }
         });
     });

@@ -21,7 +21,7 @@
     </div>
     <div class="card-body">
         <p class="card-text" style="white-space: pre-line;">{{ row.tresc }}<br/></p>
-            {% if row.img %}<img src="/static/images/{{ row.id }}" alt="" style="max-width: 40rem; max-height: 20rem;">{% endif %}
+            {% if row.img %}<img src="/static/images/{{ row.id }}" alt="" class="imgpost">{% endif %}
             </div>
     <div class="card-footer">
 		{% if session['login'] %}

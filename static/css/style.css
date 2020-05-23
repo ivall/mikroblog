@@ -133,6 +133,10 @@ form {
       width: 95%;
   }
 }
+.imgpost {
+    max-width: 100%;
+    max-height: 25rem;
+}
 .taglike-container {
     display: flex;
     justify-content: center;

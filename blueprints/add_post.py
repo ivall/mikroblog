@@ -63,5 +63,5 @@ def add_post():
                 file.save(os.path.join(app.config['UPLOAD_FOLDER'], str(post_id)))
         websiteLink = 'http://%s' % request.host
         return redirect(f'{websiteLink}/wpis/{post_id}')
-    flash("Minimalna długość wpisu to 5 znaków, a maksymalna 300.")
+    flash("Minimalna długość wpisu to 5 znaków, a maksymalna 550.")
     return redirect(request.referrer)

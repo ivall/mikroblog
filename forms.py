@@ -4,7 +4,7 @@ from wtforms import StringField, validators, TextAreaField, PasswordField, FileF
 
 # Dodawanie wpisu
 class AddPostForm(FlaskForm):
-    wpis = TextAreaField('wpis', [validators.DataRequired(), validators.Length(min=5, max=300)])
+    wpis = TextAreaField('wpis', [validators.DataRequired(), validators.Length(min=5, max=550)])
 
 
 # Rejestracja

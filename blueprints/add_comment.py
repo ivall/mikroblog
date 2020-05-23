@@ -14,7 +14,7 @@ def dodaj_komentarz():
     content = request.form['inputvalue']
     author = session['login']
     post_id = request.form['post_id']
-    if validators.length(content, min=2, max=50):
+    if validators.length(content, min=2, max=75):
         cur = mysql.connection.cursor()
         cur.execute("SELECT id FROM wpisy WHERE id=%s", (post_id,))
         check = cur.fetchone()

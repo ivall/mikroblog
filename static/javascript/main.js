@@ -50,44 +50,19 @@
 
 })();
 
-// Check the main container is ready
-$(document).ready(function() {
-    // Get each div
-    $('.card-text').each(function(){
-        // Get the content
-        var str = $(this).html();
-        // Set the regex string
-        var regex = /(https?:\/\/([-\w\.]+)+(:\d+)?(\/([\w\/_\.]*(\?\S+)?)?)?)/ig
-        // Replace plain text links by hyperlinks
-        var replaced_text = str.replace(regex, "<a href='$1' target='_blank'>$1</a>");
-        // Echo link
-        $(this).html(replaced_text);
-    });
-    $('.komentarztresc').each(function(){
-        // Get the content
-        var str = $(this).html();
-        // Set the regex string
-        var regex = /(https?:\/\/([-\w\.]+)+(:\d+)?(\/([\w\/_\.]*(\?\S+)?)?)?)/ig
-        // Replace plain text links by hyperlinks
-        var replaced_text = str.replace(regex, "<a href='$1' target='_blank'>$1</a>");
-        // Echo link
-        $(this).html(replaced_text);
-    });
-    $('.card-text').each(function(){
-        var str = $(this).html();
-        var re = /(#[a-z0-9][a-z0-9\-_]*)/ig;
-        str = str.replace(re, function(x) { return '<a href="/tag/'+x.substring(1, x.length)+'">' + x + '</a> '; });
-        $(this).html(str);
-    });
-});
-
 $(function () {
   $('[data-toggle="tooltip"]').tooltip();
 });
 
 $(document).ready(function(){
 	var maxLength = 150;
-	$(".card-text").each(function(){
+	$(".card-text").each(function(){ //rakowy kod
+	    var str = $(this).html();
+        var re = /(#[a-z0-9][a-z0-9\-_]*)/ig;
+        str = str.replace(re, function(x) { return '<a href="/tag/'+x.substring(1, x.length)+'">' + x + '</a> '; });
+        var regex = /(https?:\/\/([-\w\.]+)+(:\d+)?(\/([\w\/_\.]*(\?\S+)?)?)?)/ig;
+        var replaced_text = str.replace(regex, "<a href='$1' target='_blank'>$1</a>");
+        $(this).html(replaced_text);
 		var myStr = $(this).text();
 		if($.trim(myStr).length > maxLength){
 			var newStr = myStr.substring(0, maxLength);
@@ -95,10 +70,20 @@ $(document).ready(function(){
 			$(this).empty().html(newStr);
 			$(this).append('<a href="javascript:void(0);" class="read-more"> Zobacz całość</a>');
 			$(this).append('<span class="more-text">'+removedStr+'</span>');
+			var str = $(this).html();
+            str = str.replace(re, function(x) { return '<a href="/tag/'+x.substring(1, x.length)+'">' + x + '</a> '; });
+            var replaced_text = str.replace(regex, "<a href='$1' target='_blank'>$1</a>");
+            $(this).html(replaced_text);
 		}
 	});
 	$(".read-more").click(function(){
 		$(this).siblings(".more-text").contents().unwrap();
 		$(this).remove();
 	});
+	$('.komentarztresc').each(function(){
+        var str = $(this).html();
+        var regex = /(https?:\/\/([-\w\.]+)+(:\d+)?(\/([\w\/_\.]*(\?\S+)?)?)?)/ig;
+        var replaced_text = str.replace(regex, "<a href='$1' target='_blank'>$1</a>");
+        $(this).html(replaced_text);
+    });
 });
