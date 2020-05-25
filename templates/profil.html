@@ -17,7 +17,13 @@
 <div class="avatar" style="text-align: center; margin-top: 65px;">
     <img src="https://avatars.dicebear.com/v2/identicon/{{nick}}.svg?height[]=100px?width[]=100px">
 </div>
-<div class="statistics">
+{% if description %}
+<div class="opis">
+    <p class="text-muted" style="margin-right: 7px;">Opis:</p>
+    <p>{{ description }}</p>
+</div>
+{% endif %}
+<div class="statistics" style="margin-top: -5px;">
     <div class="iloscwpisow text-center">
         <h3>{{countPosts}}</h3><br/>
         <h5 style="margin-top: -30px;">{% if countPosts == 0 %}napisanych wpisów{% elif countPosts == 1 %}napisany wpis{% elif countPosts <= 4 %}napisane wpisy{% elif countPosts >= 5 %}napisanych wpisów{% endif %}</h5>

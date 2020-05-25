@@ -17,8 +17,6 @@ def remove():
     checkRemover = cur.fetchone()
     if checkRemover:
         if os.path.exists("./static/images/"+str(checkRemover['id'])):
-            arr = os.listdir('./static/images/')
-            print(arr)
             os.remove('./static/images/'+str(checkRemover['id']))
         cur.execute("DELETE FROM wpisy WHERE id=%s", (post_id,))
         cur.execute("DELETE FROM komentarze WHERE post_id=%s", (post_id,))

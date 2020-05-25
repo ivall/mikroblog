@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 4.9.5
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Czas generowania: 01 Maj 2020, 23:56
--- Wersja serwera: 10.4.11-MariaDB
--- Wersja PHP: 7.4.3
+-- Host: mysql.ct8.pl
+-- Czas generowania: 24 Maj 2020, 13:05
+-- Wersja serwera: 5.7.26-29-log
+-- Wersja PHP: 7.1.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -17,6 +17,10 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Baza danych: `m10362_flaskdb`
+--
 
 -- --------------------------------------------------------
 
@@ -32,17 +36,6 @@ CREATE TABLE `komentarze` (
   `post_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-
---
--- Struktura tabeli dla tabeli `tags`
---
-
-CREATE TABLE `tags` (
-  `id` int(11) NOT NULL,
-  `tag` varchar(255) NOT NULL,
-  `post_id` int(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
 -- --------------------------------------------------------
 
 --
@@ -51,9 +44,33 @@ CREATE TABLE `tags` (
 
 CREATE TABLE `likes` (
   `id` int(11) NOT NULL,
-  `user_id` varchar(33) NOT NULL,
+  `user_id` varchar(100) NOT NULL,
   `post_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `obserwowanetagi`
+--
+
+CREATE TABLE `obserwowanetagi` (
+  `id` int(11) NOT NULL,
+  `user` varchar(300) NOT NULL,
+  `tag` varchar(300) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `tags`
+--
+
+CREATE TABLE `tags` (
+  `id` int(11) NOT NULL,
+  `tag` varchar(300) NOT NULL,
+  `post_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -68,7 +85,6 @@ CREATE TABLE `users` (
   `password` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-
 -- --------------------------------------------------------
 
 --
@@ -80,8 +96,13 @@ CREATE TABLE `wpisy` (
   `tresc` varchar(355) NOT NULL,
   `autor` varchar(100) NOT NULL,
   `data` datetime NOT NULL,
-  `lajki` int(11) NOT NULL
+  `lajki` int(11) NOT NULL,
+  `img` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Indeksy dla zrzutów tabel
+--
 
 --
 -- Indeksy dla tabeli `komentarze`
@@ -90,15 +111,21 @@ ALTER TABLE `komentarze`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeksy dla tabeli `tags`
---
-ALTER TABLE `tags`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indeksy dla tabeli `likes`
 --
 ALTER TABLE `likes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeksy dla tabeli `obserwowanetagi`
+--
+ALTER TABLE `obserwowanetagi`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeksy dla tabeli `tags`
+--
+ALTER TABLE `tags`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -114,32 +141,44 @@ ALTER TABLE `wpisy`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT dla tabel zrzutów
 --
 
 --
 -- AUTO_INCREMENT dla tabeli `komentarze`
 --
 ALTER TABLE `komentarze`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=252;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT dla tabeli `likes`
 --
 ALTER TABLE `likes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=552;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT dla tabeli `obserwowanetagi`
+--
+ALTER TABLE `obserwowanetagi`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT dla tabeli `tags`
+--
+ALTER TABLE `tags`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT dla tabeli `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT dla tabeli `wpisy`
 --
 ALTER TABLE `wpisy`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=126;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

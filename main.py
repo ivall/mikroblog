@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, flash, jsonify, request
+from flask import Flask, render_template, redirect, url_for, flash, jsonify, request, session
 from flask_mysqldb import MySQL
 from blueprints.logout import logout_blueprint
 from blueprints.register import register_blueprint
@@ -15,17 +15,26 @@ from blueprints.follows import follows_blueprint
 from forms import AddPostForm
 from errors import page_not_found
 from errors import method_not_allowed
+from flask_mail import Mail, Message
+from itsdangerous import URLSafeTimedSerializer, SignatureExpired
+import string
+import bcrypt
+import random
 
 
 app = Flask(__name__)
 app.config.from_object('config')
 mysql = MySQL(app)
+mail = Mail(app)
+
+s = URLSafeTimedSerializer('secretkey')
 
 app.register_error_handler(404, page_not_found)
 app.register_error_handler(405, method_not_allowed)
 
 app.jinja_env.trim_blocks = True
 app.jinja_env.lstrip_blocks = True
+
 
 @app.route('/', methods=['GET'])
 def index():
@@ -58,8 +67,8 @@ def populary():
 @app.route('/profil/<nick>', methods=['GET'])
 def profil(nick):
     cur = mysql.connection.cursor()
-    cur.execute("SELECT id FROM users WHERE login=%s",(nick,))
-    check_user_exists = cur.fetchall()
+    cur.execute("SELECT description FROM users WHERE login=%s", (nick,))
+    check_user_exists = cur.fetchone()
     if check_user_exists:
         cur.execute("SELECT * FROM wpisy WHERE autor=%s ORDER BY `id` DESC", (nick,))
         posts = cur.fetchall()
@@ -70,8 +79,10 @@ def profil(nick):
         count_comments = len(list(cur))
         cur.execute("SELECT * FROM likes")
         likes = cur.fetchall()
+        description = check_user_exists['description']
         cur.close()
-        return render_template('profil.html', posts=posts, comments=comments, likes=likes, nick=nick, countComments=count_comments, countPosts=count_posts)
+        return render_template('profil.html', posts=posts, comments=comments, likes=likes, nick=nick,
+                               countComments=count_comments, countPosts=count_posts, description=description)
     flash("Nie znaleziono użytkownika z takim loginem")
     return redirect(url_for('index'))
 
@@ -81,7 +92,7 @@ def tag(tagname):
     form = AddPostForm()
     list_posts = []
     cur = mysql.connection.cursor()
-    cur.execute("SELECT post_id FROM tags WHERE tag=%s",(tagname,))
+    cur.execute("SELECT post_id FROM tags WHERE tag=%s", (tagname,))
     tags = cur.fetchall()
     if tags:
         for post_id in tags:
@@ -95,7 +106,8 @@ def tag(tagname):
         cur.execute("SELECT  * FROM obserwowanetagi")
         follows = cur.fetchall()
         cur.close()
-        return render_template('index.html', posts=posts, comments=comments, likes=likes, form=form, tag=tagname, follows=follows)
+        return render_template('index.html', posts=posts, comments=comments, likes=likes, form=form, tag=tagname,
+                               follows=follows)
     flash("Taki tag jeszcze nie istnieje")
     return redirect(url_for('index'))
 
@@ -113,6 +125,51 @@ def likes():
             users.append(x['user_id'])
         return jsonify({'likes': ", ".join(users)})
     return jsonify({'likes': 'Nikt jeszcze nie polubił tego wpisu'})
+
+
+@app.route('/reset', methods=['POST'])
+def reset():
+    email = request.form['email']
+    if email:
+        cur = mysql.connection.cursor()
+        cur.execute("SELECT email FROM users WHERE email=%s", (email,))
+        userEmail = cur.fetchone()
+        if userEmail:
+            token = s.dumps(email, salt='password-reset')
+            msg = Message('mikroblog.ct8.pl: resetuj hasło', sender='mikroblog@ivall.pl', recipients=[email])
+            link = url_for('reset_token', token=token, _external=True)
+            msg.body = 'Otrzymano prośbę o zresetowanie hasła do serwisu https://mikroblog.ct8.pl, link do resetowania hasła: {}'.format(
+                link)
+            mail.send(msg)
+            flash("Wysłano link do resetowania hasła na podany email, link jest ważny 10 minut")
+            return redirect(url_for('login_blueprint.login'))
+        flash("Nie znaleziono użytkownika z takim emailem")
+        return redirect(url_for('login_blueprint.login'))
+    flash("Nie podałeś adresu email")
+    return redirect(url_for('login_blueprint.login'))
+
+
+@app.route('/reset/<token>')
+def reset_token(token):
+    if 'login' not in session:
+        try:
+            email = s.loads(token, salt='password-reset', max_age=600)
+        except SignatureExpired:
+            flash("Token jest już nieważny")
+            return redirect(url_for('login_blueprint.login'))
+        password = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(25))
+        password_for_hash = password.encode('utf-8')
+        hash_password = bcrypt.hashpw(password_for_hash, bcrypt.gensalt())
+        cur = mysql.connection.cursor()
+        cur.execute("UPDATE users SET password=%s WHERE email=%s", (hash_password, email,))
+        mysql.connection.commit()
+        cur.close()
+        msg = Message('mikroblog.ct8.pl: nowe hasło', sender='mikroblog@ivall.pl', recipients=[email])
+        msg.body = 'Twoje nowe hasło do logowania: {}'.format(password)
+        mail.send(msg)
+        flash("Wysłano nowe hasło na emaila")
+        return redirect(url_for('login_blueprint.login'))
+    return redirect(url_for('index'))
 
 
 app.register_blueprint(follows_blueprint)

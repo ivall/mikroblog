@@ -163,5 +163,10 @@ form {
     color: white;
 }
 .card-text .more-text{
-        display: none;
+    display: none;
+}
+.opis {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
 }

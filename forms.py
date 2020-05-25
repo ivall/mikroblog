@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm, RecaptchaField
-from wtforms import StringField, validators, TextAreaField, PasswordField, FileField
+from wtforms import StringField, validators, TextAreaField, PasswordField
 
 
 # Dodawanie wpisu
@@ -24,3 +24,8 @@ class ChangeEmail(FlaskForm):
 class ChangePassword(FlaskForm):
     oldpassword = PasswordField('oldpassword', [validators.DataRequired()])
     password = PasswordField('password', [validators.DataRequired()])
+
+
+# Opis użytkownika
+class ChangeDescription(FlaskForm):
+    description = TextAreaField('description', [validators.DataRequired(), validators.Length(min=0, max=50)])

@@ -26,6 +26,7 @@
               Witaj, {{ session['login'] }}
             </a>
             <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="/profil/{{ session['login'] }}">Profil</a>
               <a class="dropdown-item" href="{{ url_for('settings_blueprint.ustawieniaget') }}">Ustawienia</a>
               <a class="dropdown-item" href="{{ url_for('logout_blueprint.logout') }}">Wyloguj</a>
             </div>

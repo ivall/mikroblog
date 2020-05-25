@@ -9,6 +9,7 @@
 <body>
 
 {% include 'navbar.html' %}
+{% include 'reset-password-modal.html' %}
 
 <form class="logowanie" method="post">
 {% with messages = get_flashed_messages() %}
@@ -29,12 +30,7 @@
     <label for="haslo">Hasło</label>
     <input type="password" class="form-control" id="haslo" name="password" required>
   </div>
-  <div class="form-check">
-    <input type="checkbox" class="form-check-input" id="dropdownCheck2">
-    <label class="form-check-label" for="dropdownCheck2">
-      Zapamiętaj mnie
-    </label>
-  </div>
+    <a href="#resetPasswordModal" data-toggle="modal" data-target="#resetPasswordModal">Nie pamiętasz hasła?</a><br/>
   <button type="submit" class="btn btn-primary">Zaloguj się</button>
 </form>
 
