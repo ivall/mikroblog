@@ -1,0 +1,14 @@
+SECRET_KEY = "secretkey"
+RECAPTCHA_USE_SSL = False
+RECAPTCHA_PUBLIC_KEY = 'public'
+RECAPTCHA_PRIVATE_KEY = 'secret'
+MYSQL_HOST = 'localhost'
+MYSQL_USER = 'root'
+MYSQL_PASSWORD = ''
+MYSQL_DB = 'database name'
+MYSQL_CURSORCLASS = 'DictCursor'
+MAIL_SERVER = 'smtp.googlemail.com'
+MAIL_PORT = 587
+MAIL_USE_TLS = True
+MAIL_USERNAME = 'email'
+MAIL_PASSWORD = 'pass'
