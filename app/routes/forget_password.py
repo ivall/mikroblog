@@ -1,8 +1,7 @@
 from flask import request, session, url_for, redirect, flash
-from .. import create_app
-from flask_mysqldb import MySQL
+from app import mysql, mail
 from flask import Blueprint
-from flask_mail import Mail, Message
+from flask_mail import Message
 from itsdangerous import URLSafeTimedSerializer, SignatureExpired
 import string
 import bcrypt
@@ -10,12 +9,8 @@ import random
 
 forget_password_blueprint = Blueprint('forget_password_blueprint', __name__)
 
-app = create_app()
-mysql = MySQL(app)
-mail = Mail(app)
-mail.init_app(app)
-
 s = URLSafeTimedSerializer('secretkey')
+
 
 @forget_password_blueprint.route('/reset', methods=['POST'])
 def reset():
@@ -59,4 +54,4 @@ def reset_token(token):
         mail.send(msg)
         flash("Wysłano nowe hasło na emaila")
         return redirect(url_for('login_blueprint.login'))
-    return redirect(url_for('index'))
+    return redirect(url_for('index_blueprint.index'))

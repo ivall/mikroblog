@@ -1,13 +1,9 @@
 from flask import session, render_template, request, abort, redirect, url_for, flash
-from .. import create_app
-from flask_mysqldb import MySQL
+from app import mysql
 from flask import Blueprint
-from forms import AddPostForm
+from app.utils.forms import AddPostForm
 
 follows_blueprint = Blueprint('follows_blueprint', __name__)
-
-app = create_app()
-mysql = MySQL(app)
 
 @follows_blueprint.route('/obserwowane', methods=['GET'])
 def follows():
@@ -35,10 +31,10 @@ def follows():
                 cur.close()
                 return render_template('index.html', posts=posts, comments=comments, likes=likes, form=form)
             flash("Jeszcze nic nie obserwujesz")
-            return redirect(url_for('index'))
+            return redirect(url_for('index_blueprint.index'))
         flash("Jeszcze nic nie obserwujesz")
-        return redirect(url_for('index'))
-    return redirect(url_for('index'))
+        return redirect(url_for('index_blueprint.index'))
+    return redirect(url_for('index_blueprint.index'))
 
 
 @follows_blueprint.route('/obserwuj', methods=['POST'])
@@ -91,4 +87,4 @@ def tag(tagname):
         return render_template('index.html', posts=posts, comments=comments, likes=likes, form=form, tag=tagname,
                                follows=follows)
     flash("Taki tag jeszcze nie istnieje")
-    return redirect(url_for('index'))
+    return redirect(url_for('index_blueprint.index'))

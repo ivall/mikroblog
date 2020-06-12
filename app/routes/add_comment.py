@@ -1,12 +1,9 @@
 from flask import Blueprint, session, request, jsonify, abort
-from .. import create_app
-from flask_mysqldb import MySQL
+from app import mysql
 import validators
-from functions import getActualTime
-add_comment_blueprint = Blueprint('add_comment_blueprint', __name__)
+from app.utils.functions import getActualTime
 
-app = create_app()
-mysql = MySQL(app)
+add_comment_blueprint = Blueprint('add_comment_blueprint', __name__)
 
 
 @add_comment_blueprint.route('/dodaj_komentarz', methods=['POST'])

@@ -1,12 +1,8 @@
 from flask import request, session, jsonify, abort
-from .. import create_app
-from flask_mysqldb import MySQL
+from app import mysql
 from flask import Blueprint
 
 likesystem_blueprint = Blueprint('likesystem_blueprint', __name__)
-
-app = create_app()
-mysql = MySQL(app)
 
 
 @likesystem_blueprint.route('/like', methods=['POST'])

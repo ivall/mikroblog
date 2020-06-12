@@ -1,11 +1,7 @@
-from flask import Flask, Blueprint, redirect, url_for, render_template
-from flask_mysqldb import MySQL
-from forms import AddPostForm
+from flask import Blueprint, redirect, url_for, render_template
+from app import mysql
+from app.utils.forms import AddPostForm
 post_blueprint = Blueprint('post_blueprint', __name__)
-
-app = Flask(__name__)
-app.config.from_object('config')
-mysql = MySQL(app)
 
 
 @post_blueprint.route('/wpis/<int:postid>', methods=['GET'])
@@ -21,4 +17,4 @@ def wpis(postid):
         likes = cur.fetchall()
         cur.close()
         return render_template('index.html', posts=post, comments=comments, likes=likes, form=form)
-    return redirect(url_for('index'))
+    return redirect(url_for('index_blueprint.index'))

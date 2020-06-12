@@ -1,13 +1,10 @@
-from flask import Flask, render_template
-from flask_mysqldb import MySQL
+from flask import render_template
+from app import mysql
 from flask import Blueprint
-from forms import AddPostForm
+from app.utils.forms import AddPostForm
 
 populary_posts_blueprint = Blueprint('populary_posts_blueprint', __name__)
 
-app = Flask(__name__)
-app.config.from_object('config')
-mysql = MySQL(app)
 
 @populary_posts_blueprint.route('/popularne', methods=['GET'])
 def populary():

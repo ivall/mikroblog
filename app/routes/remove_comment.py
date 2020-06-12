@@ -1,11 +1,7 @@
-from flask import Flask, request, session, redirect, abort
-from flask_mysqldb import MySQL
+from flask import request, session, redirect, abort
+from app import mysql
 from flask import Blueprint
 remove_comment_blueprint = Blueprint('remove_comment_blueprint', __name__)
-
-app = Flask(__name__)
-app.config.from_object('config')
-mysql = MySQL(app)
 
 
 @remove_comment_blueprint.route('/removekom', methods=['POST'])

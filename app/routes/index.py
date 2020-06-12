@@ -1,14 +1,9 @@
 from flask import render_template
-from flask_mysqldb import MySQL
-from .. import create_app
+from app import mysql
 from flask import Blueprint
-from forms import AddPostForm
+from app.utils.forms import AddPostForm
 
 index_blueprint = Blueprint('index_blueprint', __name__)
-
-app = create_app()
-mysql = MySQL(app)
-
 
 
 @index_blueprint.route('/', methods=['GET'])

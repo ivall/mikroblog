@@ -1,12 +1,8 @@
-from flask import Flask, request, session, redirect, abort
-from flask_mysqldb import MySQL
+from flask import request, session, redirect, abort
+from app import mysql
 from flask import Blueprint
 import os
 remove_blueprint = Blueprint('remove_blueprint', __name__)
-
-app = Flask(__name__)
-app.config.from_object('config')
-mysql = MySQL(app)
 
 
 @remove_blueprint.route('/remove', methods=['POST'])

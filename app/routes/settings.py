@@ -1,13 +1,10 @@
 import bcrypt
-from flask import Flask, session, url_for, redirect, flash, render_template, Blueprint
-from flask_mysqldb import MySQL
-from forms import ChangeEmail, ChangePassword, ChangeDescription
+from flask import session, url_for, redirect, flash, render_template, Blueprint
+from app import mysql
+from app.utils.forms import ChangeEmail, ChangePassword, ChangeDescription
 
 settings_blueprint = Blueprint('settings_blueprint', __name__)
 
-app = Flask(__name__)
-app.config.from_object('config')
-mysql = MySQL(app)
 
 @settings_blueprint.route('/ustawienia', methods=['GET'])
 def ustawieniaget():
@@ -20,7 +17,7 @@ def ustawieniaget():
         old_description = cur.fetchone()
         formo.description.data = old_description['description']
         return render_template('ustawienia.html', formr=formr, formp=formp, formo=formo)
-    return redirect(url_for('index'))
+    return redirect(url_for('index_blueprint.index'))
 
 
 @settings_blueprint.route('/zmienemail', methods=['POST'])
@@ -33,11 +30,11 @@ def zmienemail():
             cur.execute("UPDATE users SET email=%s WHERE login=%s", (email, session['login'],))
             mysql.connection.commit()
             cur.close()
-            return redirect(url_for('index'))
+            return redirect(url_for('index_blueprint.index'))
         flash("Wystąpił błąd")
-        return redirect(url_for('index'))
+        return redirect(url_for('index_blueprint.index'))
     flash("Wystąpił błąd")
-    return redirect(url_for('index'))
+    return redirect(url_for('index_blueprint.index'))
 
 
 @settings_blueprint.route('/zmienhaslo', methods=['POST'])
@@ -57,13 +54,13 @@ def zmienhaslo():
                 cur.execute("UPDATE users SET password=%s WHERE login=%s", (hash_password, session['login'],))
                 mysql.connection.commit()
                 cur.close()
-                return redirect(url_for('index'))
+                return redirect(url_for('index_blueprint.index'))
             flash("Niepoprawne stare hasło")
-            return redirect(url_for('index'))
+            return redirect(url_for('index_blueprint.index'))
         flash("Wystąpił błąd")
-        return redirect(url_for('index'))
+        return redirect(url_for('index_blueprint.index'))
     flash("Wystąpił błąd")
-    return redirect(url_for('index'))
+    return redirect(url_for('index_blueprint.index'))
 
 
 @settings_blueprint.route('/zmienopis', methods=['POST'])
@@ -76,8 +73,8 @@ def zmienopis():
             cur.execute("UPDATE users SET description=%s WHERE login=%s", (description,session['login'],))
             mysql.connection.commit()
             cur.close()
-            return redirect(url_for('profil', nick=session['login']))
+            return redirect(url_for('user_profile_blueprint.profil', nick=session['login']))
         flash("Wystąpił błąd, maksymlna długość opisu wynosi 50 znaków.")
-        return redirect(url_for('index'))
+        return redirect(url_for('index_blueprint.index'))
     flash("Nie jesteś zalogowany")
     return redirect(url_for('login_blueprint.login'))

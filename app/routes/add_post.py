@@ -1,22 +1,17 @@
 from flask import Blueprint, request, session, redirect, flash
-from .. import create_app
-from flask_mysqldb import MySQL
-from forms import AddPostForm
-from functions import getActualTime
+from app import mysql
+from app.utils.forms import AddPostForm
+from app.utils.functions import getActualTime
 import os
 
-UPLOAD_FOLDER = './static/images/'
-ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 add_post_blueprint = Blueprint('add_post_blueprint', __name__)
 
-app = create_app()
-mysql = MySQL(app)
-app.config.from_object('config')
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
 
 @add_post_blueprint.route('/dodajwpis', methods=['POST'])
 def add_post():
@@ -58,7 +53,7 @@ def add_post():
         if 'file' in request.files:
             file = request.files['file']
             if file and allowed_file(file.filename):
-                file.save(os.path.join(app.config['UPLOAD_FOLDER'], str(post_id)))
+                file.save(os.path.join('app/static/images/', str(post_id) + '.jpg'))
         websiteLink = 'http://%s' % request.host
         return redirect(f'{websiteLink}/wpis/{post_id}')
     flash("Minimalna długość wpisu to 5 znaków, a maksymalna 550.")
