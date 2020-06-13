@@ -50,15 +50,12 @@
 
 })();
 
-$(function () {
-  $('[data-toggle="tooltip"]').tooltip();
-});
 
 $(document).ready(function(){
 	var maxLength = 150;
 	$(".card-text").each(function(){ //rakowy kod
 	    var str = $(this).html();
-        var re = /(#[a-z0-9][a-z0-9\-_]*)/ig;
+        var re = /(\B#[a-z0-9][a-z0-9\-_]*)/ig;
         str = str.replace(re, function(x) { return '<a href="/tag/'+x.substring(1, x.length)+'">' + x + '</a> '; });
         var regex = /(https?:\/\/([-\w\.]+)+(:\d+)?(\/([\w\/_\.]*(\?\S+)?)?)?)/ig;
         var replaced_text = str.replace(regex, "<a href='$1' target='_blank'>$1</a>");

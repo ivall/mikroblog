@@ -6,7 +6,8 @@ import os
 
 add_post_blueprint = Blueprint('add_post_blueprint', __name__)
 
-ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
+
 
 def allowed_file(filename):
     return '.' in filename and \
@@ -32,11 +33,11 @@ def add_post():
         if 'file' in request.files:
             file = request.files['file']
             if file and allowed_file(file.filename):
-                imageAttached = 1
+                imageAttached = file.filename
             else:
-                imageAttached = 0
+                imageAttached = ""
         else:
-            imageAttached = 0
+            imageAttached = ""
         cur.execute("INSERT INTO wpisy (tresc, autor, data, img) VALUES (%s,%s,%s,%s)", (content, author, actualtime, imageAttached))
         mysql.connection.commit()
         for word in content.split():
@@ -53,7 +54,7 @@ def add_post():
         if 'file' in request.files:
             file = request.files['file']
             if file and allowed_file(file.filename):
-                file.save(os.path.join('app/static/images/', str(post_id) + '.jpg'))
+                file.save(os.path.join('app/static/images/', file.filename))
         websiteLink = 'http://%s' % request.host
         return redirect(f'{websiteLink}/wpis/{post_id}')
     flash("Minimalna długość wpisu to 5 znaków, a maksymalna 550.")

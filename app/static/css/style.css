@@ -170,3 +170,7 @@ form {
     justify-content: center;
     margin-top: 15px;
 }
+footer {
+    background-color: #2d3436;
+    padding: 5px;
+}

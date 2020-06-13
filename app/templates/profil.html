@@ -14,8 +14,8 @@
 {% include 'navbar.html' %}
 {% include 'likes-modal.html' %}
 <div class="container" style="margin-top: 60px;">
-<h2 class="text-center">Profil użytkownika {{ nick }}</h2>
-<div class="avatar" style="text-align: center; margin-top: 65px;">
+<h2 class="text-center">{{ nick }}</h2>
+<div class="avatar" style="text-align: center;">
     <img src="https://avatars.dicebear.com/v2/identicon/{{nick}}.svg?height[]=100px?width[]=100px">
 </div>
 {% if description %}

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.5
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
--- Host: mysql.ct8.pl
--- Czas generowania: 24 Maj 2020, 13:05
--- Wersja serwera: 5.7.26-29-log
--- Wersja PHP: 7.1.33
+-- Host: 127.0.0.1
+-- Czas generowania: 13 Cze 2020, 19:51
+-- Wersja serwera: 10.4.11-MariaDB
+-- Wersja PHP: 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Baza danych: `m10362_flaskdb`
+-- Baza danych: `flaskdb`
 --
 
 -- --------------------------------------------------------
@@ -44,7 +44,7 @@ CREATE TABLE `komentarze` (
 
 CREATE TABLE `likes` (
   `id` int(11) NOT NULL,
-  `user_id` varchar(100) NOT NULL,
+  `user_id` varchar(33) NOT NULL,
   `post_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -58,7 +58,7 @@ CREATE TABLE `obserwowanetagi` (
   `id` int(11) NOT NULL,
   `user` varchar(300) NOT NULL,
   `tag` varchar(300) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -68,9 +68,9 @@ CREATE TABLE `obserwowanetagi` (
 
 CREATE TABLE `tags` (
   `id` int(11) NOT NULL,
-  `tag` varchar(300) NOT NULL,
-  `post_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `tag` varchar(255) NOT NULL,
+  `post_id` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -82,7 +82,8 @@ CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `login` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `password` varchar(100) NOT NULL
+  `password` varchar(100) NOT NULL,
+  `description` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -97,7 +98,7 @@ CREATE TABLE `wpisy` (
   `autor` varchar(100) NOT NULL,
   `data` datetime NOT NULL,
   `lajki` int(11) NOT NULL,
-  `img` tinyint(1) NOT NULL
+  `img` varchar(300) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -141,7 +142,7 @@ ALTER TABLE `wpisy`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT dla tabel zrzutów
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
