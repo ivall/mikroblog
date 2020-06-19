@@ -19,6 +19,8 @@ def login():
             if len(user) > 0:
                 if bcrypt.hashpw(password, user['password'].encode('utf-8')) == user['password'].encode('utf-8'):
                     session['login'] = user['login']
+                    if user['admin']:
+                        session['admin'] = True
                     return redirect(url_for('index_blueprint.index'))
                 else:
                     flash("Niepoprawne hasło.")

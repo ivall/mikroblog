@@ -1,5 +1,7 @@
 from flask_wtf import FlaskForm, RecaptchaField
 from wtforms import StringField, validators, TextAreaField, PasswordField
+from wtforms_validators import AlphaNumeric
+
 
 
 # Dodawanie wpisu
@@ -9,7 +11,7 @@ class AddPostForm(FlaskForm):
 
 # Rejestracja
 class RegisterForm(FlaskForm):
-    nick = StringField('nick', [validators.DataRequired(), validators.Length(min=4, max=28)])
+    nick = StringField('nick', [validators.DataRequired(), validators.Length(min=4, max=28), AlphaNumeric()])
     email = StringField('email', [validators.DataRequired(), validators.email()])
     password = PasswordField('password', [validators.DataRequired()])
     recaptcha = RecaptchaField()

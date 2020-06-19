@@ -16,5 +16,7 @@ def populary():
     comments = cur.fetchall()
     cur.execute("SELECT * FROM likes")
     likes = cur.fetchall()
+    cur.execute("SELECT login, admin FROM users")
+    users = cur.fetchall()
     cur.close()
-    return render_template('index.html', posts=posts, comments=comments, likes=likes, form=form)
+    return render_template('index.html', posts=posts, comments=comments, likes=likes, form=form, users=users)

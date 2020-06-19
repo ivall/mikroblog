@@ -21,17 +21,12 @@ def register():
             if not checkUsername and not checkEmail:
                 password = formr.password.data.encode('utf-8')
                 hash_password = bcrypt.hashpw(password, bcrypt.gensalt())
-                login = login.replace("/", "")
-                login = login.replace("<", "")
-                login = login.replace(">", "")
-                if len(login) > 4:
-                    cur.execute("INSERT INTO users (login, email, password) VALUES (%s,%s,%s)", (login, email, hash_password,))
-                    mysql.connection.commit()
-                    session['login'] = login
-                    return redirect(url_for('index_blueprint.index'))
-                flash("Login jest za krótki")
+                cur.execute("INSERT INTO users (login, email, password) VALUES (%s,%s,%s)", (login, email, hash_password,))
+                mysql.connection.commit()
+                session['login'] = login
+                return redirect(url_for('index_blueprint.index'))
             flash("Użytkownik z takim loginem/emailem już istnieje.")
-        flash("Wystąpił błąd z walidacją.")
+        flash("Wystąpił błąd z walidacją. Dozwoloną są tylko znaki A-Z oraz cyfry.")
         return redirect(url_for('register_blueprint.register'))
     elif session.get('login'):
         return redirect(url_for('index_blueprint.index'))

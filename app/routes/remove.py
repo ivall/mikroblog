@@ -9,9 +9,9 @@ remove_blueprint = Blueprint('remove_blueprint', __name__)
 def remove():
     post_id = request.form['post_id']
     cur = mysql.connection.cursor()
-    cur.execute("SELECT id, img FROM wpisy WHERE id=%s AND autor=%s", (post_id, session['login'],))
+    cur.execute("SELECT autor, id, img FROM wpisy WHERE id=%s", (post_id,))
     checkRemover = cur.fetchone()
-    if checkRemover:
+    if checkRemover and checkRemover['autor'] == session['login'] or checkRemover and 'admin' in session:
         if os.path.exists("app/static/images/"+str(checkRemover['img'])) and checkRemover['img']:
             os.remove('app/static/images/'+str(checkRemover['img']))
         cur.execute("DELETE FROM wpisy WHERE id=%s", (post_id,))

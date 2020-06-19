@@ -11,10 +11,10 @@ def geteditpost(post_id):
     form = AddPostForm()
     form.wpis.data = ""
     cur = mysql.connection.cursor()
-    cur.execute("SELECT autor, tresc FROM wpisy WHERE id=%s AND autor=%s",(post_id,session['login'],))
-    checkPost = cur.fetchall()
-    if checkPost:
-        oldContent = checkPost[0]['tresc']
+    cur.execute("SELECT autor, tresc FROM wpisy WHERE id=%s", (post_id,))
+    checkPost = cur.fetchone()
+    if checkPost and checkPost['autor'] == session['login'] or checkPost and 'admin' in session:
+        oldContent = checkPost['tresc']
         form.wpis.data = oldContent
         return render_template('edit.html', form=form, postid=post_id)
     flash("Wystąpił błąd")
@@ -25,9 +25,9 @@ def geteditpost(post_id):
 def editpost(postid):
     form = AddPostForm()
     cur = mysql.connection.cursor()
-    cur.execute("SELECT autor, tresc FROM wpisy WHERE id=%s AND autor=%s",(postid,session['login'],))
-    checkPost = cur.fetchall()
-    if checkPost:
+    cur.execute("SELECT autor, tresc FROM wpisy WHERE id=%s", (postid,))
+    checkPost = cur.fetchone()
+    if checkPost and checkPost['autor'] == session['login'] or checkPost and 'admin' in session:
         if form.validate_on_submit():
             content = form.wpis.data
             lines = content.split("\n")

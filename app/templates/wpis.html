@@ -1,12 +1,12 @@
 <div class="card bg-dark mb-3" id="wpis{{ row.id }}">
-    <div class="card-header" style="height: 55px;">
-        <a href="/profil/{{ row.autor }}"><img class="imgavatar" src="https://avatars.dicebear.com/v2/identicon/{{row.autor}}.svg?height[]=30px?width[]=30px"></a>
-    <div class="autor" style="display: inline-block; position: relative; top: -8px;">
-        {% if row.autor == "ivall" %}
+    <div class="card-header">
+        <a href="/profil/{{ row.autor }}"><img class="imgavatar" alt="Awatar {{ row.autor }}" src="https://avatars.dicebear.com/v2/identicon/{{row.autor}}.svg?height[]=30px?width[]=30px"></a>
+    <div class="autor d-inline-block position-relative">
+        {% for user in users if user.login == row.autor and user.admin %}
             <a class="autorwpisu{{ row.id }}" href="/profil/{{ row.autor }}" style="color: red;">{{ row.autor }}</a><br/> <a href="/wpis/{{ row.id }}"><time class="timeago" datetime="{{row.data}}" title="{{ row.data }}"></time></a>
         {% else %}
             <a class="autorwpisu{{ row.id }} text-white" href="/profil/{{ row.autor }}">{{ row.autor }}</a><br/>  <a href="/wpis/{{ row.id }}"><time class="timeago" datetime="{{row.data}}" title="{{ row.data }}"></time></a>
-        {% endif %}
+        {% endfor %}
     </div>
         <div class="float-sm-right d-inline-block float-right">
                 {% if session['login'] %}
@@ -16,7 +16,8 @@
                         <button id="likebtn{{ row.id }}" class="btn btn-success btn-sm lajkbtn" post_id="{{ row.id }}" type="submit" >Polub</button>
                     {% endfor %}
                 {% endif %}
-            <i class="fas fa-thumbs-up" style="display:inline-block;"></i> <div class="likes{{ row.id }} d-inline-block number-of-likes" post-id="{{ row.id }}">{{ row.lajki }}</div>
+            <i class="fas fa-thumbs-up d-inline-block"></i>
+            <div class="likes{{ row.id }} d-inline-block number-of-likes" post-id="{{ row.id }}">{{ row.lajki }}</div>
         </div>
     </div>
     <div class="card-body">
@@ -29,7 +30,7 @@
             </div>
     <div class="card-footer">
 		{% if session['login'] %}
-            {% if session['login'] == row.autor %}<button type="submit" class="usunwpis" post_id="{{ row.id }}">Usuń wpis</button>
+            {% if session['login'] == row.autor or session['admin'] %}<button type="submit" class="usunwpis" post_id="{{ row.id }}">Usuń wpis</button>
             <a href="/edit/{{ row.id }}" style="color: green; margin-left: 15px;">Edytuj wpis</a><br/>{% endif %}
             <input class="form-control komentarz" id="komentarz{{ row.id }}" placeholder="Komentarz" required>
             <button type="submit" class="btn btn-primary btn-sm dodajkomentarz" post_id="{{ row.id }}" style="display: inline-block; margin-top: -5px;">Wyślij</button>
@@ -39,7 +40,7 @@
             {% if krow.post_id == row.id %}
                 <div class="komentarz{{ krow.id }} komentarztresc">
                     {% if krow.autor == row.autor %}<a href="/profil/{{ krow.autor }}" style="color: white;"><b>{{ krow.autor }}</b></a>:{% else %}<a href="/profil/{{ krow.autor }}" style="color: white;">{{ krow.autor }}</a>:{% endif %} {{ krow.tresc }}<div class="datakomentarza"><time class="timeago" datetime="{{krow.data}}" title="{{ krow.data }}"></time></div>
-                    {% if krow.autor == session['login'] %}
+                    {% if krow.autor == session['login'] or session['admin'] %}
                         <span class="usunkomentarz" kom_id="{{ krow.id }}">&times;</span>
                     {% endif %}<br/>
                 </div>

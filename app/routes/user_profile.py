@@ -20,9 +20,11 @@ def profil(nick):
         count_comments = len(list(cur))
         cur.execute("SELECT * FROM likes")
         likes = cur.fetchall()
+        cur.execute("SELECT login, admin FROM users")
+        users = cur.fetchall()
         description = check_user_exists['description']
         cur.close()
         return render_template('profil.html', posts=posts, comments=comments, likes=likes, nick=nick,
-                               countComments=count_comments, countPosts=count_posts, description=description)
+                               countComments=count_comments, countPosts=count_posts, description=description, users=users)
     flash("Nie znaleziono użytkownika z takim loginem")
     return redirect(url_for('index_blueprint.index'))

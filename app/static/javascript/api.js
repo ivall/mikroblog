@@ -141,4 +141,19 @@ $(document).ready(function() {
             }
         });
     });
+    $(document).on("click", ".notifications-icon", function() {
+        $("#notificationsModal").modal("show");
+        $.ajax({
+            url : '/powiadomienia',
+            type : 'GET',
+            success: function(data) {
+                $('.notifications-modal-body').text('');
+                data.notifications.forEach((element) => {
+                    $('.notifications-modal-body').append(
+                        `<a href="/chat/${element.reciver}/${element.sender}" class="notification-link"><div class="notification"><b>${element.sender}</b> napisał do Ciebie prywatną wiadomość.</div></a>`
+                    );
+                });
+            }
+        });
+    });
 });

@@ -38,6 +38,7 @@ def add_post():
                 imageAttached = ""
         else:
             imageAttached = ""
+
         cur.execute("INSERT INTO wpisy (tresc, autor, data, img) VALUES (%s,%s,%s,%s)", (content, author, actualtime, imageAttached))
         mysql.connection.commit()
         for word in content.split():

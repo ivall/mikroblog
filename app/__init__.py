@@ -1,9 +1,11 @@
 from flask import Flask
 from flask_mysqldb import MySQL
 from flask_mail import Mail
+from flask_socketio import SocketIO
 
 mysql = MySQL()
 mail = Mail()
+socketio = SocketIO()
 
 
 def create_app():
@@ -20,6 +22,7 @@ def create_app():
 
     mysql.init_app(app)
     mail.init_app(app)
+    socketio.init_app(app)
 
     from .routes.logout import logout_blueprint
     from .routes.register import register_blueprint
@@ -37,6 +40,8 @@ def create_app():
     from .routes.forget_password import forget_password_blueprint
     from .routes.user_profile import user_profile_blueprint
     from .routes.index import index_blueprint
+    from .routes.private_messages_system import pm_system_blueprint
+    from .routes.notifications import notifications_blueprint
 
     app.register_blueprint(user_profile_blueprint)
     app.register_blueprint(forget_password_blueprint)
@@ -54,5 +59,7 @@ def create_app():
     app.register_blueprint(logout_blueprint)
     app.register_blueprint(remove_comment_blueprint)
     app.register_blueprint(index_blueprint)
+    app.register_blueprint(pm_system_blueprint)
+    app.register_blueprint(notifications_blueprint)
 
     return app

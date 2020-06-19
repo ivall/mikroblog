@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block body %}
+
+    {% include 'navbar.html' %}
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
+    <div class="container" style="margin-top: 200px; justify-content: center; display: flex; flex-direction: column;">
+        <ul id="messages">
+            {% for message in old_messages %}
+                <li>{{ message['sender'] }}: {{ message['content'] }}</li>
+            {% endfor %}
+        </ul>
+        <input type="text" id="myMessage" class="form-control" placeholder="Tekst...">
+        <button id="send" class="btn btn-primary">Wyślij</button>
+    </div>
+    <script type="text/javascript" charset="utf-8">
+        var socket = io();
+        var messages = document.getElementById("messages");
+        socket.on('message', function(msg, sender) {
+            $("#messages").append("<li>"+sender+": "+msg+"</li>");
+            messages.scrollTop = messages.scrollHeight;
+        });
+        socket.on('connect', function() {
+            socket.emit('join', {room: '{{ room }}'});
+            messages.scrollTop = messages.scrollHeight;
+        });
+        $('#send').on('click', function() {
+            socket.emit('message', {message: $('#myMessage').val().replace(/(<([^>]+)>)/ig,""), room: '{{ room }}', reciver: '{{ reciver }}'});
+            $('#myMessage').val('');
+        });
+    </script>
+
+{% endblock %}

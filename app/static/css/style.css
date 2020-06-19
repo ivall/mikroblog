@@ -1,11 +1,11 @@
-html, body {
-  height: 100%;
-}
 body {
     margin: 0;
     position: relative;
     background: #1e272e;
     color: white;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
 }
 .dodajwpis {
     color: white;
@@ -36,7 +36,7 @@ body {
 form {
     margin: 0;
 }
-.komentarz {
+.komentarz, #myMessage {
     width: 300px;
     padding: 5px;
     margin-top: 10px;
@@ -44,6 +44,11 @@ form {
     background-color: #1e272e;
     color: white;
     border: none;
+}
+#myMessage {
+    background-color: #1b1e21;
+    width: 99.2%;
+    margin-bottom: 5px;
 }
 .komentarz:focus {
     background-color: #1e272e;
@@ -81,6 +86,7 @@ form {
 }
 .container {
     min-height: 100%;
+    flex: 1;
 }
 .settings_change {
     display: inline-block;
@@ -173,4 +179,49 @@ form {
 footer {
     background-color: #2d3436;
     padding: 5px;
+    width: 100%;
+}
+.card-header {
+    height: 55px;
+}
+.autor {
+    top: -8px
+}
+.pm-button-container {
+    display: flex;
+    justify-content: center;
+    margin: -20px 0 20px 0;
+}
+#messages {
+    max-height: 300px;
+    overflow-y: auto;
+}
+ul {
+    padding-inline-start: 3px;
+}
+ul li {
+    list-style-type: none;
+}
+#send {
+    align-self: flex-end;
+    width: 15%;
+}
+.fa-bell {
+    margin-top: 5px;
+}
+.fa-bell:hover {
+    cursor: pointer;
+}
+.notification {
+    background-color: #3e454b;
+    margin: 10px;
+    padding: 10px;
+}
+.notification-link {
+    color: #fff;
+}
+.notification-link:hover .notification{
+    color: #fff;
+    text-decoration: none;
+        background-color: #555d63;
 }

@@ -8,9 +8,9 @@ remove_comment_blueprint = Blueprint('remove_comment_blueprint', __name__)
 def remove_comment():
     comment_id = request.form['kom_id']
     cur = mysql.connection.cursor()
-    cur.execute("SELECT * FROM komentarze WHERE id=%s AND autor=%s", (comment_id, session['login'],))
-    checkRemover = cur.fetchall()
-    if checkRemover:
+    cur.execute("SELECT * FROM komentarze WHERE id=%s", (comment_id,))
+    checkRemover = cur.fetchone()
+    if checkRemover and checkRemover['autor'] == session['login'] or checkRemover and 'admin' in session:
         cur.execute("DELETE FROM komentarze WHERE id=%s", (comment_id,))
         mysql.connection.commit()
         cur.close()
