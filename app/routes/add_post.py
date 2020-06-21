@@ -1,7 +1,7 @@
 from flask import Blueprint, request, session, redirect, flash
-from app import mysql
-from app.utils.forms import AddPostForm
-from app.utils.functions import getActualTime
+from .. import mysql
+from ..utils.forms import AddPostForm
+from ..utils.functions import getActualTime
 import os
 
 add_post_blueprint = Blueprint('add_post_blueprint', __name__)

@@ -1,5 +1,5 @@
 from flask import request, session, url_for, redirect, flash
-from app import mysql, mail
+from .. import mysql, mail
 from flask import Blueprint
 from flask_mail import Message
 from itsdangerous import URLSafeTimedSerializer, SignatureExpired

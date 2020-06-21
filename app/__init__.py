@@ -2,6 +2,7 @@ from flask import Flask
 from flask_mysqldb import MySQL
 from flask_mail import Mail
 from flask_socketio import SocketIO
+from logging import FileHandler, WARNING
 
 mysql = MySQL()
 mail = Mail()
@@ -23,6 +24,10 @@ def create_app():
     mysql.init_app(app)
     mail.init_app(app)
     socketio.init_app(app)
+    
+    file_handler = FileHandler('errorlog.txt')
+    file_handler.setLevel(WARNING)
+    app.logger.addHandler(file_handler)
 
     from .routes.logout import logout_blueprint
     from .routes.register import register_blueprint

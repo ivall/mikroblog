@@ -1,7 +1,7 @@
 from flask import Blueprint, session, request, jsonify, abort
-from app import mysql
+from .. import mysql
 import validators
-from app.utils.functions import getActualTime
+from ..utils.functions import getActualTime
 
 add_comment_blueprint = Blueprint('add_comment_blueprint', __name__)
 

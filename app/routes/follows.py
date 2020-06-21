@@ -1,7 +1,7 @@
 from flask import session, render_template, request, abort, redirect, url_for, flash
-from app import mysql
+from .. import mysql
 from flask import Blueprint
-from app.utils.forms import AddPostForm
+from ..utils.forms import AddPostForm
 
 follows_blueprint = Blueprint('follows_blueprint', __name__)
 

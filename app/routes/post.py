@@ -1,6 +1,6 @@
 from flask import Blueprint, redirect, url_for, render_template
-from app import mysql
-from app.utils.forms import AddPostForm
+from .. import mysql
+from ..utils.forms import AddPostForm
 post_blueprint = Blueprint('post_blueprint', __name__)
 
 

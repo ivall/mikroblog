@@ -1,5 +1,5 @@
 from flask import render_template, request, session, url_for, redirect, flash
-from app import mysql
+from .. import mysql
 from flask import Blueprint
 import bcrypt
 

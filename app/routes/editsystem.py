@@ -1,7 +1,7 @@
 from flask import session, url_for, redirect, flash, render_template
-from app import mysql
+from .. import mysql
 from flask import Blueprint
-from app.utils.forms import AddPostForm
+from ..utils.forms import AddPostForm
 
 editsystem_blueprint = Blueprint('editsystem_blueprint', __name__)
 

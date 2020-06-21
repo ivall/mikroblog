@@ -1,5 +1,5 @@
 from flask import request, session, redirect, abort
-from app import mysql
+from .. import mysql
 from flask import Blueprint
 import os
 remove_blueprint = Blueprint('remove_blueprint', __name__)

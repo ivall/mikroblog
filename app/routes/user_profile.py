@@ -1,5 +1,5 @@
 from flask import render_template, redirect, url_for, flash
-from app import mysql
+from .. import mysql
 from flask import Blueprint
 
 user_profile_blueprint = Blueprint('user_profile_blueprint', __name__)

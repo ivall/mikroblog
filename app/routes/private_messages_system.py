@@ -1,6 +1,6 @@
 from flask import Blueprint, redirect, url_for, render_template, request, session
 from flask_socketio import join_room, leave_room, send, emit
-from app import mysql, socketio
+from .. import mysql, socketio
 
 pm_system_blueprint = Blueprint('pm_system_blueprint', __name__)
 

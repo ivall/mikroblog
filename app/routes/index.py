@@ -1,7 +1,7 @@
 from flask import render_template, session
-from app import mysql
+from .. import mysql
 from flask import Blueprint
-from app.utils.forms import AddPostForm
+from ..utils.forms import AddPostForm
 
 index_blueprint = Blueprint('index_blueprint', __name__)
 

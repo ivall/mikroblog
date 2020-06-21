@@ -1,6 +1,6 @@
 from flask import render_template, request, session, url_for, redirect, flash, Blueprint
-from app import mysql
-from app.utils.forms import RegisterForm
+from .. import mysql
+from ..utils.forms import RegisterForm
 import bcrypt
 
 register_blueprint = Blueprint('register_blueprint', __name__)

@@ -1,5 +1,5 @@
 from flask import Blueprint, session, jsonify, abort
-from app import mysql
+from .. import mysql
 
 notifications_blueprint = Blueprint('notifications_blueprint', __name__)
 

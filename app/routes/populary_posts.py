@@ -1,7 +1,7 @@
 from flask import render_template
-from app import mysql
+from .. import mysql
 from flask import Blueprint
-from app.utils.forms import AddPostForm
+from ..utils.forms import AddPostForm
 
 populary_posts_blueprint = Blueprint('populary_posts_blueprint', __name__)
 

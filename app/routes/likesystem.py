@@ -1,5 +1,5 @@
 from flask import request, session, jsonify, abort
-from app import mysql
+from .. import mysql
 from flask import Blueprint
 
 likesystem_blueprint = Blueprint('likesystem_blueprint', __name__)
