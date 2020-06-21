@@ -15,4 +15,4 @@ def remove_comment():
         mysql.connection.commit()
         cur.close()
         return redirect(request.referrer)
-    return abort
+    return abort(401)

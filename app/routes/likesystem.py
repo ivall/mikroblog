@@ -21,7 +21,7 @@ def like():
         cur.close()
         likes = table['lajki'] + 1
         return jsonify({'likes': likes})
-    return abort
+    return abort(401)
 
 
 @likesystem_blueprint.route('/unlike', methods=['POST'])
@@ -40,7 +40,7 @@ def unlike():
         cur.close()
         likes = table['lajki'] - 1
         return jsonify({'likes': likes})
-    return abort
+    return abort(401)
 
 
 @likesystem_blueprint.route('/likes', methods=['POST'])
