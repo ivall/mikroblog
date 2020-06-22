@@ -30,7 +30,8 @@
   </div>
 </div>
 
-<form class="logowanie" method="post">
+<div class="container-login">
+    <form class="logowanie" method="post">
 {% with messages = get_flashed_messages() %}
     {% if messages %}
         {% for message in messages %}
@@ -51,7 +52,9 @@
   </div>
     <a href="#resetPasswordModal" data-toggle="modal" data-target="#resetPasswordModal">Nie pamiętasz hasła?</a><br/>
   <button type="submit" class="btn btn-primary">Zaloguj się</button>
-</form>
+    </form>
+</div>
+
 
 <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha384-LVoNJ6yst/aLxKvxwp6s2GAabqPczfWh6xzm38S/YtjUyZ+3aTKOnD/OJVGYLZDl" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

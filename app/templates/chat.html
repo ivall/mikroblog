@@ -7,7 +7,7 @@
     <div class="container" style="margin-top: 200px; justify-content: center; display: flex; flex-direction: column;">
         <ul id="messages">
             {% for message in old_messages %}
-                <li>{{ message['sender'] }}: {{ message['content'] }}</li>
+                <li class="private_message">{{ message['sender'] }}: {{ message['content'] }}</li>
             {% endfor %}
         </ul>
         <input type="text" id="myMessage" class="form-control" placeholder="Tekst...">
@@ -17,7 +17,7 @@
         var socket = io();
         var messages = document.getElementById("messages");
         socket.on('message', function(msg, sender) {
-            $("#messages").append("<li>"+sender+": "+msg+"</li>");
+            $("#messages").append('<li class="private_message">'+sender+': '+msg+'</li>');
             messages.scrollTop = messages.scrollHeight;
         });
         socket.on('connect', function() {

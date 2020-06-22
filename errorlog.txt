@@ -1,0 +1,449 @@
+Exception on / [GET]
+Traceback (most recent call last):
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\mrend\Desktop\mysite\app\routes\index.py", line 13, in index
+    cur = mysql.connection.cursor()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask_mysqldb\__init__.py", line 94, in connection
+    ctx.mysql_db = self.connect
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask_mysqldb\__init__.py", line 81, in connect
+    return MySQLdb.connect(**kwargs)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\MySQLdb\__init__.py", line 84, in Connect
+    return Connection(*args, **kwargs)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\MySQLdb\connections.py", line 179, in __init__
+    super(Connection, self).__init__(*args, **kwargs2)
+MySQLdb._exceptions.OperationalError: (2003, "Can't connect to MySQL server on 'localhost' (10061)")
+Exception on /dodajwpis [POST]
+Traceback (most recent call last):
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\mrend\Desktop\mysite\app\routes\add_post.py", line 58, in add_post
+    file.save(os.path.join('app/static/images/', post_id + imageAttached))
+TypeError: unsupported operand type(s) for +: 'int' and 'list'
+Exception on /dodajwpis [POST]
+Traceback (most recent call last):
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\mrend\Desktop\mysite\app\routes\add_post.py", line 58, in add_post
+    file.save(os.path.join('app/static/images/', post_id + str(imageAttached)))
+TypeError: unsupported operand type(s) for +: 'int' and 'str'
+Exception on /dodajwpis [POST]
+Traceback (most recent call last):
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\mrend\Desktop\mysite\app\routes\add_post.py", line 58, in add_post
+    file.save(os.path.join('app/static/images/', str(post_id) + imageAttached.join('')))
+AttributeError: 'list' object has no attribute 'join'
+Exception on /dodajwpis [POST]
+Traceback (most recent call last):
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\MySQLdb\cursors.py", line 204, in execute
+    query = query % args
+TypeError: not all arguments converted during bytes formatting
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\mrend\Desktop\mysite\app\routes\add_post.py", line 44, in add_post
+    cur.execute("INSERT INTO wpisy (tresc, autor, data, img) VALUES (%s,%s,%s)", (content, author, actualtime, imageAttached))
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\MySQLdb\cursors.py", line 206, in execute
+    raise ProgrammingError(str(m))
+MySQLdb._exceptions.ProgrammingError: not all arguments converted during bytes formatting
+Exception on /dodajwpis [POST]
+Traceback (most recent call last):
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\mrend\Desktop\mysite\app\routes\add_post.py", line 58, in add_post
+    file_name = post_id + "".join(imageAttached)
+TypeError: unsupported operand type(s) for +: 'int' and 'str'
+Exception on /dodajwpis [POST]
+Traceback (most recent call last):
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\MySQLdb\cursors.py", line 204, in execute
+    query = query % args
+TypeError: not all arguments converted during bytes formatting
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\mrend\Desktop\mysite\app\routes\add_post.py", line 59, in add_post
+    cur.execute("UPDATE wpisy SET img=%s", file_name)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\MySQLdb\cursors.py", line 206, in execute
+    raise ProgrammingError(str(m))
+MySQLdb._exceptions.ProgrammingError: not all arguments converted during bytes formatting
+Exception on /dodajwpis [POST]
+Traceback (most recent call last):
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\mrend\Desktop\mysite\app\routes\add_post.py", line 59, in add_post
+    cur.execute("UPDATE wpisy SET img=%s WHERE id=%s", file_name, post_id)
+TypeError: execute() takes from 2 to 3 positional arguments but 4 were given
+Exception on /dodajwpis [POST]
+Traceback (most recent call last):
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\mrend\Desktop\mysite\app\routes\add_post.py", line 59, in add_post
+    cur.execute("INSERT INTO wpisy (img) VALUES(%s) WHERE id=%s", (file_name, post_id))
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\MySQLdb\cursors.py", line 209, in execute
+    res = self._query(query)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\MySQLdb\cursors.py", line 315, in _query
+    db.query(q)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\MySQLdb\connections.py", line 239, in query
+    _mysql.connection.query(self, query)
+MySQLdb._exceptions.ProgrammingError: (1064, "You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'WHERE id=366' at line 1")
+Exception on /dodajwpis [POST]
+Traceback (most recent call last):
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\mrend\Desktop\mysite\app\routes\add_post.py", line 59, in add_post
+    cur.execute("INSERT INTO wpisy (img) VALUES (%s) WHERE id=%s", (file_name, post_id))
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\MySQLdb\cursors.py", line 209, in execute
+    res = self._query(query)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\MySQLdb\cursors.py", line 315, in _query
+    db.query(q)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\MySQLdb\connections.py", line 239, in query
+    _mysql.connection.query(self, query)
+MySQLdb._exceptions.ProgrammingError: (1064, "You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'WHERE id=367' at line 1")
+Exception on /dodajwpis [POST]
+Traceback (most recent call last):
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\mrend\Desktop\mysite\app\routes\add_post.py", line 59, in add_post
+    cur.execute("INSERT INTO wpisy (img) VALUES (%s) WHERE id=%s", (file_name, post_id))
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\MySQLdb\cursors.py", line 209, in execute
+    res = self._query(query)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\MySQLdb\cursors.py", line 315, in _query
+    db.query(q)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\MySQLdb\connections.py", line 239, in query
+    _mysql.connection.query(self, query)
+MySQLdb._exceptions.ProgrammingError: (1064, "You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'WHERE id=368' at line 1")
+Exception on / [GET]
+Traceback (most recent call last):
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\mrend\Desktop\mysite\app\routes\index.py", line 13, in index
+    cur = mysql.connection.cursor()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask_mysqldb\__init__.py", line 94, in connection
+    ctx.mysql_db = self.connect
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask_mysqldb\__init__.py", line 81, in connect
+    return MySQLdb.connect(**kwargs)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\MySQLdb\__init__.py", line 84, in Connect
+    return Connection(*args, **kwargs)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\MySQLdb\connections.py", line 179, in __init__
+    super(Connection, self).__init__(*args, **kwargs2)
+MySQLdb._exceptions.OperationalError: (2003, "Can't connect to MySQL server on 'localhost' (10061)")
+Exception on / [GET]
+Traceback (most recent call last):
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\mrend\Desktop\mysite\app\routes\index.py", line 13, in index
+    cur = mysql.connection.cursor()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask_mysqldb\__init__.py", line 94, in connection
+    ctx.mysql_db = self.connect
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask_mysqldb\__init__.py", line 81, in connect
+    return MySQLdb.connect(**kwargs)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\MySQLdb\__init__.py", line 84, in Connect
+    return Connection(*args, **kwargs)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\MySQLdb\connections.py", line 179, in __init__
+    super(Connection, self).__init__(*args, **kwargs2)
+MySQLdb._exceptions.OperationalError: (2003, "Can't connect to MySQL server on 'localhost' (10061)")
+Exception on /dodaj_komentarz [POST]
+Traceback (most recent call last):
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 2116, in make_response
+    rv = self.response_class.force_type(rv, request.environ)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\werkzeug\wrappers\base_response.py", line 269, in force_type
+    response = BaseResponse(*_run_wsgi_app(response, environ))
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\werkzeug\wrappers\base_response.py", line 26, in _run_wsgi_app
+    return _run_wsgi_app(*args)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\werkzeug\test.py", line 1096, in run_wsgi_app
+    app_rv = app(environ, start_response)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\werkzeug\exceptions.py", line 822, in abort
+    return _aborter(status, *args, **kwargs)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\werkzeug\exceptions.py", line 805, in __call__
+    if code not in self.mapping:
+TypeError: unhashable type: 'dict'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1967, in finalize_request
+    response = self.make_response(rv)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 2124, in make_response
+    reraise(TypeError, new_error, sys.exc_info()[2])
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\_compat.py", line 38, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 2116, in make_response
+    rv = self.response_class.force_type(rv, request.environ)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\werkzeug\wrappers\base_response.py", line 269, in force_type
+    response = BaseResponse(*_run_wsgi_app(response, environ))
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\werkzeug\wrappers\base_response.py", line 26, in _run_wsgi_app
+    return _run_wsgi_app(*args)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\werkzeug\test.py", line 1096, in run_wsgi_app
+    app_rv = app(environ, start_response)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\werkzeug\exceptions.py", line 822, in abort
+    return _aborter(status, *args, **kwargs)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\werkzeug\exceptions.py", line 805, in __call__
+    if code not in self.mapping:
+TypeError: unhashable type: 'dict'
+The view function did not return a valid response. The return type must be a string, dict, tuple, Response instance, or WSGI callable, but it was a function.
+Exception on /dodaj_komentarz [POST]
+Traceback (most recent call last):
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask_limiter\extension.py", line 696, in __inner
+    self.__check_request_limit(False)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask_limiter\extension.py", line 612, in __check_request_limit
+    six.reraise(*sys.exc_info())
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\six.py", line 703, in reraise
+    raise value
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask_limiter\extension.py", line 609, in __check_request_limit
+    self.__evaluate_limits(endpoint, all_limits)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask_limiter\extension.py", line 491, in __evaluate_limits
+    raise RateLimitExceeded(failed_limit)
+flask_limiter.errors.RateLimitExceeded: 429 Too Many Requests: 1 per 1 second
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1815, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1743, in handle_http_exception
+    return handler(e)
+  File "C:\Users\mrend\Desktop\mysite\app\utils\errors.py", line 19, in ratelimit_handler
+    if request.is_xhr or request.accept_mimetypes.accept_json:
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\werkzeug\local.py", line 347, in __getattr__
+    return getattr(self._get_current_object(), name)
+AttributeError: 'Request' object has no attribute 'is_xhr'
+Exception on /dodaj_komentarz [POST]
+Traceback (most recent call last):
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask_limiter\extension.py", line 696, in __inner
+    self.__check_request_limit(False)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask_limiter\extension.py", line 612, in __check_request_limit
+    six.reraise(*sys.exc_info())
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\six.py", line 703, in reraise
+    raise value
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask_limiter\extension.py", line 609, in __check_request_limit
+    self.__evaluate_limits(endpoint, all_limits)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask_limiter\extension.py", line 491, in __evaluate_limits
+    raise RateLimitExceeded(failed_limit)
+flask_limiter.errors.RateLimitExceeded: 429 Too Many Requests: 1 per 1 second
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1815, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1743, in handle_http_exception
+    return handler(e)
+  File "C:\Users\mrend\Desktop\mysite\app\utils\errors.py", line 19, in ratelimit_handler
+    if request.is_xhr or request.accept_mimetypes.accept_json:
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\werkzeug\local.py", line 347, in __getattr__
+    return getattr(self._get_current_object(), name)
+AttributeError: 'Request' object has no attribute 'is_xhr'
+Exception on /dodaj_komentarz [POST]
+Traceback (most recent call last):
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask_limiter\extension.py", line 696, in __inner
+    self.__check_request_limit(False)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask_limiter\extension.py", line 612, in __check_request_limit
+    six.reraise(*sys.exc_info())
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\six.py", line 703, in reraise
+    raise value
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask_limiter\extension.py", line 609, in __check_request_limit
+    self.__evaluate_limits(endpoint, all_limits)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask_limiter\extension.py", line 491, in __evaluate_limits
+    raise RateLimitExceeded(failed_limit)
+flask_limiter.errors.RateLimitExceeded: 429 Too Many Requests: 5 per 1 minute
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1815, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1743, in handle_http_exception
+    return handler(e)
+  File "C:\Users\mrend\Desktop\mysite\app\utils\errors.py", line 19, in ratelimit_handler
+    if request.is_xhr or request.accept_mimetypes.accept_json:
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\werkzeug\local.py", line 347, in __getattr__
+    return getattr(self._get_current_object(), name)
+AttributeError: 'Request' object has no attribute 'is_xhr'
+Exception on /login [POST]
+Traceback (most recent call last):
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\mrend\Desktop\mysite\app\routes\login.py", line 21, in login
+    cur.execute("UPDATE users SET ip=%s WHERE id=%s", (request.remote_addr, user['id']))
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\MySQLdb\cursors.py", line 186, in execute
+    while self.nextset():
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\MySQLdb\cursors.py", line 138, in nextset
+    db = self._get_db()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\MySQLdb\cursors.py", line 171, in _get_db
+    raise ProgrammingError("cursor closed")
+MySQLdb._exceptions.ProgrammingError: cursor closed

@@ -1,5 +1,5 @@
 from flask import Blueprint, redirect, url_for, render_template, request, session
-from flask_socketio import join_room, leave_room, send, emit
+from flask_socketio import join_room, emit
 from .. import mysql, socketio
 
 pm_system_blueprint = Blueprint('pm_system_blueprint', __name__)
@@ -42,16 +42,21 @@ def on_join(data):
 
 @socketio.on('message')
 def handle_message(data):
-    if data['message']:
+    message = data['message'].replace("<","")
+    if message and 'login' in session:
         sender = session['login']
         cur = mysql.connection.cursor()
-        cur.execute("SELECT id FROM notifications WHERE sender=%s AND reciver=%s AND type=%s AND readed=%s",
-                    (sender, data['reciver'], 'private_message', 0))
-        check_notifications = cur.fetchall()
-        if not check_notifications:
-            cur.execute("INSERT INTO notifications (sender,reciver,type,readed) VALUES (%s,%s,%s,%s)",
+        cur.execute("SELECT id FROM rooms WHERE sender=%s AND reciver=%s AND id=%s OR sender=%s AND reciver=%s AND id=%s",
+                    (sender, data['reciver'], data['room'], data['reciver'], sender, data['room']))
+        check_room = cur.fetchone()
+        if check_room:
+            cur.execute("SELECT id FROM notifications WHERE sender=%s AND reciver=%s AND type=%s AND readed=%s",
                         (sender, data['reciver'], 'private_message', 0))
-        cur.execute("INSERT INTO messages (sender, room_id, content) VALUES (%s,%s,%s)",
-                    (sender, data['room'], data['message'],))
-        mysql.connection.commit()
-        emit('message', (data['message'], sender), room=data['room'])
+            check_notifications = cur.fetchall()
+            if not check_notifications:
+                cur.execute("INSERT INTO notifications (sender,reciver,type,readed) VALUES (%s,%s,%s,%s)",
+                            (sender, data['reciver'], 'private_message', 0))
+            cur.execute("INSERT INTO messages (sender, room_id, content) VALUES (%s,%s,%s)",
+                        (sender, data['room'], message,))
+            mysql.connection.commit()
+            emit('message', (data['message'], sender), room=data['room'])

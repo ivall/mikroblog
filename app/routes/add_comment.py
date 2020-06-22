@@ -1,5 +1,5 @@
-from flask import Blueprint, session, request, jsonify, abort
-from .. import mysql
+from flask import Blueprint, session, request, jsonify
+from .. import mysql, limiter
 import validators
 from ..utils.functions import getActualTime
 
@@ -7,6 +7,8 @@ add_comment_blueprint = Blueprint('add_comment_blueprint', __name__)
 
 
 @add_comment_blueprint.route('/dodaj_komentarz', methods=['POST'])
+@limiter.limit('6/minute')
+@limiter.limit('1/second')
 def dodaj_komentarz():
     content = request.form['inputvalue']
     author = session['login']
@@ -23,5 +25,5 @@ def dodaj_komentarz():
             comment_id = cur.fetchone()
             comment_id = comment_id['id']
             return jsonify({'autor': author, 'tresc': content, 'komid': comment_id})
-        return abort
-    return abort
+        return jsonify({'information': 'Wystąpił błąd'}), 409
+    return jsonify({'information': 'Wystąpił błąd, minimalna długość komentarza to 2 znaki, a maksymalna 75 znaków'}), 406

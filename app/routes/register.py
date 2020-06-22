@@ -21,7 +21,8 @@ def register():
             if not checkUsername and not checkEmail:
                 password = formr.password.data.encode('utf-8')
                 hash_password = bcrypt.hashpw(password, bcrypt.gensalt())
-                cur.execute("INSERT INTO users (login, email, password) VALUES (%s,%s,%s)", (login, email, hash_password,))
+                cur.execute("INSERT INTO users (login, email, password, ip) VALUES (%s,%s,%s,%s)",
+                            (login, email, hash_password, request.remote_addr))
                 mysql.connection.commit()
                 session['login'] = login
                 return redirect(url_for('index_blueprint.index'))

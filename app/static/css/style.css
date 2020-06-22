@@ -36,6 +36,12 @@ body {
 form {
     margin: 0;
 }
+.komentarztresc {
+    overflow: hidden;
+}
+.private_message {
+    overflow: hidden;
+}
 .komentarz, #myMessage {
     width: 300px;
     padding: 5px;
@@ -175,6 +181,10 @@ form {
     display: flex;
     justify-content: center;
     margin-top: 15px;
+    overflow: hidden;
+}
+.card-body {
+    overflow: hidden;
 }
 footer {
     background-color: #2d3436;
@@ -223,5 +233,5 @@ ul li {
 .notification-link:hover .notification{
     color: #fff;
     text-decoration: none;
-        background-color: #555d63;
+    background-color: #555d63;
 }

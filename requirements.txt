@@ -1,3 +1,4 @@
+werkzeug
 itsdangerous
 validators
 pytz
@@ -11,3 +12,4 @@ wtforms_validators
 flask_mail
 flask_wtf
 email_validator
+flask-limiter

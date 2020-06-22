@@ -14,20 +14,19 @@ def login():
         cur = mysql.connection.cursor()
         cur.execute("SELECT * FROM users WHERE login=%s", (login,))
         user = cur.fetchone()
-        cur.close()
-        try:
-            if len(user) > 0:
-                if bcrypt.hashpw(password, user['password'].encode('utf-8')) == user['password'].encode('utf-8'):
-                    session['login'] = user['login']
-                    if user['admin']:
-                        session['admin'] = True
-                    return redirect(url_for('index_blueprint.index'))
-                else:
-                    flash("Niepoprawne hasło.")
-                    return redirect(url_for('login_blueprint.login'))
-        except:
-            flash("Wystąpił błąd autoryzacji.")
-            return redirect(url_for('login_blueprint.login'))
+        if len(user) > 0:
+            if bcrypt.hashpw(password, user['password'].encode('utf-8')) == user['password'].encode('utf-8'):
+                session['login'] = user['login']
+
+                cur.execute("UPDATE users SET ip=%s WHERE id=%s", (request.remote_addr, user['id']))
+                mysql.connection.commit()
+                cur.close()
+                if user['admin']:
+                    session['admin'] = True
+                return redirect(url_for('index_blueprint.index'))
+            else:
+                flash("Niepoprawne hasło.")
+                return redirect(url_for('login_blueprint.login'))
     elif session.get('login'):
         return redirect(url_for('index_blueprint.index'))
     else:

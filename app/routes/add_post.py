@@ -1,7 +1,8 @@
 from flask import Blueprint, request, session, redirect, flash
-from .. import mysql
+from .. import mysql, limiter
 from ..utils.forms import AddPostForm
 from ..utils.functions import getActualTime
+from pathlib import Path
 import os
 
 add_post_blueprint = Blueprint('add_post_blueprint', __name__)
@@ -15,6 +16,8 @@ def allowed_file(filename):
 
 
 @add_post_blueprint.route('/dodajwpis', methods=['POST'])
+@limiter.limit('4/minute')
+@limiter.limit('1/second')
 def add_post():
     global imageAttached
     form = AddPostForm()
@@ -33,13 +36,12 @@ def add_post():
         if 'file' in request.files:
             file = request.files['file']
             if file and allowed_file(file.filename):
-                imageAttached = file.filename
+                imageAttached = Path(file.filename).suffixes
             else:
                 imageAttached = ""
         else:
             imageAttached = ""
-
-        cur.execute("INSERT INTO wpisy (tresc, autor, data, img) VALUES (%s,%s,%s,%s)", (content, author, actualtime, imageAttached))
+        cur.execute("INSERT INTO wpisy (tresc, autor, data) VALUES (%s,%s,%s)", (content, author, actualtime))
         mysql.connection.commit()
         for word in content.split():
             if word[0] == "#":
@@ -55,7 +57,10 @@ def add_post():
         if 'file' in request.files:
             file = request.files['file']
             if file and allowed_file(file.filename):
-                file.save(os.path.join('app/static/images/', file.filename))
+                file_name = str(post_id) + "".join(imageAttached)
+                cur.execute("UPDATE wpisy SET img=%s WHERE id=%s", (file_name, post_id))
+                mysql.connection.commit()
+                file.save(os.path.join('app/static/images/', file_name))
         websiteLink = 'http://%s' % request.host
         return redirect(f'{websiteLink}/wpis/{post_id}')
     flash("Minimalna długość wpisu to 5 znaków, a maksymalna 550.")

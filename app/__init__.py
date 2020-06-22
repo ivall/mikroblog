@@ -3,10 +3,14 @@ from flask_mysqldb import MySQL
 from flask_mail import Mail
 from flask_socketio import SocketIO
 from logging import FileHandler, WARNING
+from flask_limiter import Limiter
+from werkzeug.exceptions import RequestEntityTooLarge
+from app.utils.errors import ratelimit_handler
 
 mysql = MySQL()
 mail = Mail()
 socketio = SocketIO()
+limiter = Limiter()
 
 
 def create_app():
@@ -17,6 +21,8 @@ def create_app():
 
     app.register_error_handler(404, page_not_found)
     app.register_error_handler(405, method_not_allowed)
+    app.register_error_handler(413, RequestEntityTooLarge)
+    app.register_error_handler(429, ratelimit_handler)
 
     app.jinja_env.trim_blocks = True
     app.jinja_env.lstrip_blocks = True
@@ -24,6 +30,7 @@ def create_app():
     mysql.init_app(app)
     mail.init_app(app)
     socketio.init_app(app)
+    limiter.init_app(app)
     
     file_handler = FileHandler('errorlog.txt')
     file_handler.setLevel(WARNING)
