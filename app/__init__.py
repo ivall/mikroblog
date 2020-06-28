@@ -36,9 +36,7 @@ def create_app():
     file_handler.setLevel(WARNING)
     app.logger.addHandler(file_handler)
 
-    from .routes.logout import logout_blueprint
-    from .routes.register import register_blueprint
-    from .routes.login import login_blueprint
+    from .routes.auth import auth_blueprint
     from .routes.add_comment import add_comment_blueprint
     from .routes.add_post import add_post_blueprint
     from .routes.remove import remove_blueprint
@@ -66,9 +64,7 @@ def create_app():
     app.register_blueprint(remove_blueprint)
     app.register_blueprint(add_post_blueprint)
     app.register_blueprint(add_comment_blueprint)
-    app.register_blueprint(register_blueprint)
-    app.register_blueprint(login_blueprint)
-    app.register_blueprint(logout_blueprint)
+    app.register_blueprint(auth_blueprint)
     app.register_blueprint(remove_comment_blueprint)
     app.register_blueprint(index_blueprint)
     app.register_blueprint(pm_system_blueprint)

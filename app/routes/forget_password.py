@@ -21,7 +21,7 @@ def reset():
         userEmail = cur.fetchone()
         if userEmail:
             token = s.dumps(email, salt='password-reset')
-            msg = Message('mikroblog.ct8.pl: resetuj hasło', sender='mikroblog@ivall.pl', recipients=[email])
+            msg = Message('mikroblog.wtf: resetuj hasło', sender='mikroblog@ivall.pl', recipients=[email])
             link = url_for('forget_password_blueprint.reset_token', token=token, _external=True)
             msg.body = 'Otrzymano prośbę o zresetowanie hasła do serwisu https://mikroblog.ct8.pl, link do resetowania hasła: {}'.format(
                 link)

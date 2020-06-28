@@ -5,7 +5,7 @@ post_blueprint = Blueprint('post_blueprint', __name__)
 
 
 @post_blueprint.route('/wpis/<int:postid>', methods=['GET'])
-def wpis(postid):
+def post(postid):
     form = AddPostForm()
     cur = mysql.connection.cursor()
     cur.execute("SELECT * FROM wpisy WHERE id=%s ORDER BY `id` DESC",(postid,))

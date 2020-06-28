@@ -28,18 +28,18 @@
             </a>
             <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
               <a class="dropdown-item" href="/profil/{{ session['login'] }}">Profil</a>
-              <a class="dropdown-item" href="{{ url_for('settings_blueprint.ustawieniaget') }}">Ustawienia</a>
-              <a class="dropdown-item" href="{{ url_for('logout_blueprint.logout') }}">Wyloguj</a>
+              <a class="dropdown-item" href="{{ url_for('settings_blueprint.show_settings') }}">Ustawienia</a>
+              <a class="dropdown-item" href="{{ url_for('auth_blueprint.logout') }}">Wyloguj</a>
             </div>
         </li>
     </ul>
     {% else %}
     <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('login_blueprint.login') }}">Zaloguj</a>
+            <a class="nav-link" href="{{ url_for('auth_blueprint.login') }}">Zaloguj</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('register_blueprint.register') }}">Zarejestruj</a>
+            <a class="nav-link" href="{{ url_for('auth_blueprint.register') }}">Zarejestruj</a>
         </li>
     </ul>
     {% endif %}

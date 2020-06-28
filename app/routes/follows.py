@@ -83,12 +83,14 @@ def tag(tagname):
         comments = cur.fetchall()
         cur.execute("SELECT * FROM likes WHERE post_id IN %s", (list_posts,))
         likes = cur.fetchall()
-        cur.execute("SELECT  * FROM obserwowanetagi")
+        cur.execute("SELECT * FROM obserwowanetagi")
         follows = cur.fetchall()
         cur.execute("SELECT login, admin FROM users")
         users = cur.fetchall()
+        cur.execute("SELECT count(id) FROM obserwowanetagi WHERE tag=%s",(tagname,))
+        tag_followers = cur.fetchone()['count(id)']
         cur.close()
         return render_template('index.html', posts=posts, comments=comments, likes=likes, form=form, tag=tagname,
-                               follows=follows, users=users)
+                               follows=follows, users=users, tag_followers=tag_followers)
     flash("Taki tag jeszcze nie istnieje")
     return redirect(url_for('index_blueprint.index'))

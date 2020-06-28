@@ -8,7 +8,6 @@ index_blueprint = Blueprint('index_blueprint', __name__)
 
 @index_blueprint.route('/', methods=['GET'])
 def index():
-    notifications = {}
     form = AddPostForm()
     cur = mysql.connection.cursor()
     cur.execute("SELECT * FROM wpisy ORDER BY `id` DESC")

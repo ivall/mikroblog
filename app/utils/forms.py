@@ -31,3 +31,8 @@ class ChangePassword(FlaskForm):
 # Opis użytkownika
 class ChangeDescription(FlaskForm):
     description = TextAreaField('description', [validators.DataRequired(), validators.Length(min=0, max=50)])
+
+
+# Zmiana nicku
+class ChangeNick(FlaskForm):
+    nick = StringField('nick', [validators.DataRequired(), validators.Length(min=4, max=28), AlphaNumeric()])

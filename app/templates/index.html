@@ -39,10 +39,11 @@
 {% endif %}
 {% if request.url_rule.endpoint == 'follows_blueprint.tag' %}
     <h4 class="text-center">#{{ tag }}</h4>
+    <p class="tag_followers text-center">Obserwujący: {{ tag_followers }}</p>
     {% if session['login'] %}
         <div class="taglike-container">
             {% for trow in follows if trow.tag|lower == tag|lower and trow.user == session['login'] %}
-                <button id="odlubtag}" class="btn btn-danger btn-sm unlajktag" tag="{{ tag }}" type="submit">Przestań obserwować</button>
+                <button id="odlubtag" class="btn btn-danger btn-sm unlajktag" tag="{{ tag }}" type="submit">Przestań obserwować</button>
                 {% else %}
                 <button id="polubtag" class="btn btn-success btn-sm lajktag" tag="{{ tag }}" type="submit">Obserwuj</button>
             {% endfor %}

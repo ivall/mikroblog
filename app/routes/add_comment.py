@@ -9,7 +9,7 @@ add_comment_blueprint = Blueprint('add_comment_blueprint', __name__)
 @add_comment_blueprint.route('/dodaj_komentarz', methods=['POST'])
 @limiter.limit('6/minute')
 @limiter.limit('1/second')
-def dodaj_komentarz():
+def add_comment():
     content = request.form['inputvalue']
     author = session['login']
     post_id = request.form['post_id']
