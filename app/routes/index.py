@@ -2,6 +2,7 @@ from flask import render_template, session
 from .. import mysql
 from flask import Blueprint
 from ..utils.forms import AddPostForm
+from ..utils.functions import getPosts
 
 index_blueprint = Blueprint('index_blueprint', __name__)
 
@@ -10,12 +11,7 @@ index_blueprint = Blueprint('index_blueprint', __name__)
 def index():
     form = AddPostForm()
     cur = mysql.connection.cursor()
-    cur.execute("SELECT * FROM wpisy ORDER BY `id` DESC")
-    posts = cur.fetchall()
-    cur.execute("SELECT * FROM komentarze ORDER BY `id` DESC")
-    comments = cur.fetchall()
-    cur.execute("SELECT * FROM likes")
-    likes = cur.fetchall()
+    posts, comments, likes = getPosts(cur, '', 'id')
     cur.execute("SELECT login, admin FROM users")
     users = cur.fetchall()
     cur.close()

@@ -3,6 +3,7 @@ from .. import mysql
 from flask import Blueprint
 from ..utils.forms import AddPostForm
 
+#  That system of follows, tags sucks, I must rewrite that
 follows_blueprint = Blueprint('follows_blueprint', __name__)
 
 @follows_blueprint.route('/obserwowane', methods=['GET'])

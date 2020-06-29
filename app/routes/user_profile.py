@@ -1,6 +1,7 @@
 from flask import render_template, redirect, url_for, flash
 from .. import mysql
 from flask import Blueprint
+from ..utils.functions import getPosts
 
 user_profile_blueprint = Blueprint('user_profile_blueprint', __name__)
 
@@ -11,15 +12,9 @@ def profil(nick):
     cur.execute("SELECT description FROM users WHERE login=%s", (nick,))
     check_user_exists = cur.fetchone()
     if check_user_exists:
-        cur.execute("SELECT * FROM wpisy WHERE autor=%s ORDER BY `id` DESC", (nick,))
-        posts = cur.fetchall()
-        count_posts = len(list(cur))
-        cur.execute("SELECT * FROM komentarze ORDER BY `id` DESC")
-        comments = cur.fetchall()
-        cur.execute("SELECT * FROM komentarze WHERE autor=%s", (nick,))
-        count_comments = len(list(cur))
-        cur.execute("SELECT * FROM likes")
-        likes = cur.fetchall()
+        posts, comments, likes = getPosts(cur, f'WHERE autor=\'{nick}\'', 'id')
+        count_posts = len(list(posts))
+        count_comments = len(list(comments))
         cur.execute("SELECT login, admin FROM users")
         users = cur.fetchall()
         description = check_user_exists['description']

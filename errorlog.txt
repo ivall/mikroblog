@@ -606,3 +606,607 @@ Traceback (most recent call last):
   File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\MySQLdb\cursors.py", line 206, in execute
     raise ProgrammingError(str(m))
 MySQLdb._exceptions.ProgrammingError: not enough arguments for format string
+Exception on / [GET]
+Traceback (most recent call last):
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\mrend\Desktop\mysite\app\routes\index.py", line 12, in index
+    form = AddPostForm()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\wtforms\form.py", line 212, in __call__
+    return type.__call__(cls, *args, **kwargs)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask_wtf\form.py", line 87, in __init__
+    super(FlaskForm, self).__init__(formdata=formdata, **kwargs)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\wtforms\form.py", line 278, in __init__
+    self.process(formdata, obj, data=data, **kwargs)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\wtforms\form.py", line 132, in process
+    field.process(formdata)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\wtforms\csrf\core.py", line 43, in process
+    self.current_token = self.csrf_impl.generate_csrf_token(self)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask_wtf\csrf.py", line 139, in generate_csrf_token
+    return generate_csrf(
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask_wtf\csrf.py", line 46, in generate_csrf
+    session[field_name] = hashlib.sha1(os.urandom(64)).hexdigest()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\werkzeug\local.py", line 350, in __setitem__
+    self._get_current_object()[key] = value
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\sessions.py", line 102, in _fail
+    raise RuntimeError(
+RuntimeError: The session is unavailable because no secret key was set.  Set the secret_key on the application to something unique and secret.
+Exception on / [GET]
+Traceback (most recent call last):
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\mrend\Desktop\mysite\app\routes\index.py", line 12, in index
+    form = AddPostForm()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\wtforms\form.py", line 212, in __call__
+    return type.__call__(cls, *args, **kwargs)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask_wtf\form.py", line 87, in __init__
+    super(FlaskForm, self).__init__(formdata=formdata, **kwargs)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\wtforms\form.py", line 278, in __init__
+    self.process(formdata, obj, data=data, **kwargs)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\wtforms\form.py", line 132, in process
+    field.process(formdata)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\wtforms\csrf\core.py", line 43, in process
+    self.current_token = self.csrf_impl.generate_csrf_token(self)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask_wtf\csrf.py", line 139, in generate_csrf_token
+    return generate_csrf(
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask_wtf\csrf.py", line 46, in generate_csrf
+    session[field_name] = hashlib.sha1(os.urandom(64)).hexdigest()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\werkzeug\local.py", line 350, in __setitem__
+    self._get_current_object()[key] = value
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\sessions.py", line 102, in _fail
+    raise RuntimeError(
+RuntimeError: The session is unavailable because no secret key was set.  Set the secret_key on the application to something unique and secret.
+Exception on / [GET]
+Traceback (most recent call last):
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\mrend\Desktop\mysite\app\routes\index.py", line 26, in index
+    return render_template('index.html', posts=posts, comments=comments, likes=likes, form=form, users=users)
+NameError: name 'users' is not defined
+Exception on / [GET]
+Traceback (most recent call last):
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\mrend\Desktop\mysite\app\routes\index.py", line 26, in index
+    return render_template('index.html', posts=posts, comments=comments, likes=likes, form=form, users=users)
+NameError: name 'users' is not defined
+Exception on / [GET]
+Traceback (most recent call last):
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\mrend\Desktop\mysite\app\routes\index.py", line 14, in index
+    posts, comments, likes = getPosts(cur, '', '', 'id')
+  File "C:\Users\mrend\Desktop\mysite\app\utils\functions.py", line 12, in getPosts
+    cur.execute(f"SELECT * FROM wpisy WHERE id=%s ORDER BY `{groupby}` DESC",int())
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\MySQLdb\cursors.py", line 202, in execute
+    args = tuple(map(db.literal, args))
+TypeError: 'int' object is not iterable
+Exception on / [GET]
+Traceback (most recent call last):
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\mrend\Desktop\mysite\app\routes\index.py", line 14, in index
+    posts, comments, likes = getPosts(cur, '', '', 'id')
+  File "C:\Users\mrend\Desktop\mysite\app\utils\functions.py", line 12, in getPosts
+    cur.execute(f"SELECT * FROM wpisy WHERE id=%s ORDER BY `{groupby}` DESC",int())
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\MySQLdb\cursors.py", line 202, in execute
+    args = tuple(map(db.literal, args))
+TypeError: 'int' object is not iterable
+Exception on / [GET]
+Traceback (most recent call last):
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\MySQLdb\cursors.py", line 204, in execute
+    query = query % args
+TypeError: not enough arguments for format string
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\mrend\Desktop\mysite\app\routes\index.py", line 14, in index
+    posts, comments, likes = getPosts(cur, '', '', 'id')
+  File "C:\Users\mrend\Desktop\mysite\app\utils\functions.py", line 12, in getPosts
+    cur.execute(f"SELECT * FROM wpisy WHERE id=%s ORDER BY `{groupby}` DESC",'')
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\MySQLdb\cursors.py", line 206, in execute
+    raise ProgrammingError(str(m))
+MySQLdb._exceptions.ProgrammingError: not enough arguments for format string
+Exception on / [GET]
+Traceback (most recent call last):
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\MySQLdb\cursors.py", line 204, in execute
+    query = query % args
+TypeError: not enough arguments for format string
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\mrend\Desktop\mysite\app\routes\index.py", line 14, in index
+    posts, comments, likes = getPosts(cur, '', '', 'id')
+  File "C:\Users\mrend\Desktop\mysite\app\utils\functions.py", line 12, in getPosts
+    cur.execute(f"SELECT * FROM wpisy WHERE id=%s ORDER BY `{groupby}` DESC",'')
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\MySQLdb\cursors.py", line 206, in execute
+    raise ProgrammingError(str(m))
+MySQLdb._exceptions.ProgrammingError: not enough arguments for format string
+Exception on / [GET]
+Traceback (most recent call last):
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\mrend\Desktop\mysite\app\routes\index.py", line 14, in index
+    posts, comments, likes = getPosts(cur, '', '', 'id')
+  File "C:\Users\mrend\Desktop\mysite\app\utils\functions.py", line 12, in getPosts
+    cur.execute(f"SELECT * FROM wpisy WHERE id=%s ORDER BY `{groupby}` DESC",2)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\MySQLdb\cursors.py", line 202, in execute
+    args = tuple(map(db.literal, args))
+TypeError: 'int' object is not iterable
+Exception on / [GET]
+Traceback (most recent call last):
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\mrend\Desktop\mysite\app\routes\index.py", line 14, in index
+    posts, comments, likes = getPosts(cur, '', '', 'id')
+  File "C:\Users\mrend\Desktop\mysite\app\utils\functions.py", line 12, in getPosts
+    cur.execute(f"SELECT * FROM wpisy WHERE id=%s ORDER BY `{groupby}` DESC",2)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\MySQLdb\cursors.py", line 202, in execute
+    args = tuple(map(db.literal, args))
+TypeError: 'int' object is not iterable
+Exception on / [GET]
+Traceback (most recent call last):
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\mrend\Desktop\mysite\app\routes\index.py", line 14, in index
+    posts, comments, likes = getPosts(cur, '', '', 'id')
+  File "C:\Users\mrend\Desktop\mysite\app\utils\functions.py", line 12, in getPosts
+    cur.execute(f"SELECT * FROM wpisy WHERE id=%s ORDER BY `{groupby}` DESC",346)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\MySQLdb\cursors.py", line 202, in execute
+    args = tuple(map(db.literal, args))
+TypeError: 'int' object is not iterable
+Exception on / [GET]
+Traceback (most recent call last):
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\mrend\Desktop\mysite\app\routes\index.py", line 14, in index
+    posts, comments, likes = getPosts(cur, '', '', 'id')
+  File "C:\Users\mrend\Desktop\mysite\app\utils\functions.py", line 12, in getPosts
+    cur.execute(f"SELECT * FROM wpisy WHERE id=%s ORDER BY `{groupby}` DESC",346)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\MySQLdb\cursors.py", line 202, in execute
+    args = tuple(map(db.literal, args))
+TypeError: 'int' object is not iterable
+Exception on / [GET]
+Traceback (most recent call last):
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\mrend\Desktop\mysite\app\routes\index.py", line 14, in index
+    posts, comments, likes = getPosts(cur, '', '', 'id')
+TypeError: getPosts() takes 3 positional arguments but 4 were given
+Exception on / [GET]
+Traceback (most recent call last):
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\mrend\Desktop\mysite\app\routes\index.py", line 14, in index
+    posts, comments, likes = getPosts(cur, '', '', 'id')
+TypeError: getPosts() takes 3 positional arguments but 4 were given
+Exception on / [GET]
+Traceback (most recent call last):
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\mrend\Desktop\mysite\app\routes\index.py", line 14, in index
+    posts, comments, likes = getPosts(cur, '', 'id')
+  File "C:\Users\mrend\Desktop\mysite\app\utils\functions.py", line 16, in getPosts
+    cur.execute("SELECT * FROM likes {where}")
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\MySQLdb\cursors.py", line 209, in execute
+    res = self._query(query)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\MySQLdb\cursors.py", line 315, in _query
+    db.query(q)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\MySQLdb\connections.py", line 239, in query
+    _mysql.connection.query(self, query)
+MySQLdb._exceptions.ProgrammingError: (1064, "You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '{where}' at line 1")
+Exception on / [GET]
+Traceback (most recent call last):
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\mrend\Desktop\mysite\app\routes\index.py", line 14, in index
+    posts, comments, likes = getPosts(cur, '', 'id')
+  File "C:\Users\mrend\Desktop\mysite\app\utils\functions.py", line 16, in getPosts
+    cur.execute("SELECT * FROM likes {where}")
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\MySQLdb\cursors.py", line 209, in execute
+    res = self._query(query)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\MySQLdb\cursors.py", line 315, in _query
+    db.query(q)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\MySQLdb\connections.py", line 239, in query
+    _mysql.connection.query(self, query)
+MySQLdb._exceptions.ProgrammingError: (1064, "You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '{where}' at line 1")
+Exception on /profil/ivall [GET]
+Traceback (most recent call last):
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\mrend\Desktop\mysite\app\routes\user_profile.py", line 15, in profil
+    posts, comments, likes = getPosts(cur, f'WHERE autor={nick}', 'id')
+  File "C:\Users\mrend\Desktop\mysite\app\utils\functions.py", line 12, in getPosts
+    cur.execute(f"SELECT * FROM wpisy {where} ORDER BY `{order_by}` DESC")
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\MySQLdb\cursors.py", line 209, in execute
+    res = self._query(query)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\MySQLdb\cursors.py", line 315, in _query
+    db.query(q)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\MySQLdb\connections.py", line 239, in query
+    _mysql.connection.query(self, query)
+MySQLdb._exceptions.OperationalError: (1054, "Unknown column 'ivall' in 'where clause'")
+Exception on /profil/ivall [GET]
+Traceback (most recent call last):
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\mrend\Desktop\mysite\app\routes\user_profile.py", line 15, in profil
+    posts, comments, likes = getPosts(cur, f'WHERE autor="{nick}"', 'id')
+  File "C:\Users\mrend\Desktop\mysite\app\utils\functions.py", line 16, in getPosts
+    cur.execute(f"SELECT * FROM likes {where}")
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\MySQLdb\cursors.py", line 209, in execute
+    res = self._query(query)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\MySQLdb\cursors.py", line 315, in _query
+    db.query(q)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\MySQLdb\connections.py", line 239, in query
+    _mysql.connection.query(self, query)
+MySQLdb._exceptions.OperationalError: (1054, "Unknown column 'autor' in 'where clause'")
+Exception on /profil/ivall [GET]
+Traceback (most recent call last):
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\mrend\Desktop\mysite\app\routes\user_profile.py", line 15, in profil
+    posts, comments, likes = getPosts(cur, f'WHERE autor=\'{nick}\'', 'id')
+  File "C:\Users\mrend\Desktop\mysite\app\utils\functions.py", line 16, in getPosts
+    cur.execute(f"SELECT * FROM likes {where}")
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\MySQLdb\cursors.py", line 209, in execute
+    res = self._query(query)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\MySQLdb\cursors.py", line 315, in _query
+    db.query(q)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\MySQLdb\connections.py", line 239, in query
+    _mysql.connection.query(self, query)
+MySQLdb._exceptions.OperationalError: (1054, "Unknown column 'autor' in 'where clause'")
+Exception on /profil/ivall [GET]
+Traceback (most recent call last):
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\mrend\Desktop\mysite\app\routes\user_profile.py", line 15, in profil
+    posts, comments, likes = getPosts(cur, f'WHERE autor=ivall', 'id')
+  File "C:\Users\mrend\Desktop\mysite\app\utils\functions.py", line 12, in getPosts
+    cur.execute(f"SELECT * FROM wpisy {where} ORDER BY `{order_by}` DESC")
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\MySQLdb\cursors.py", line 209, in execute
+    res = self._query(query)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\MySQLdb\cursors.py", line 315, in _query
+    db.query(q)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\MySQLdb\connections.py", line 239, in query
+    _mysql.connection.query(self, query)
+MySQLdb._exceptions.OperationalError: (1054, "Unknown column 'ivall' in 'where clause'")
+Exception on /profil/ivall [GET]
+Traceback (most recent call last):
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\mrend\Desktop\mysite\app\routes\user_profile.py", line 15, in profil
+    posts, comments, likes = getPosts(cur, f"WHERE autor='ivall'", 'id')
+  File "C:\Users\mrend\Desktop\mysite\app\utils\functions.py", line 16, in getPosts
+    cur.execute(f"SELECT * FROM likes {where}")
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\MySQLdb\cursors.py", line 209, in execute
+    res = self._query(query)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\MySQLdb\cursors.py", line 315, in _query
+    db.query(q)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\MySQLdb\connections.py", line 239, in query
+    _mysql.connection.query(self, query)
+MySQLdb._exceptions.OperationalError: (1054, "Unknown column 'autor' in 'where clause'")
+Exception on / [GET]
+Traceback (most recent call last):
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\mrend\Desktop\mysite\app\routes\index.py", line 14, in index
+    posts, comments, likes = getPosts(cur, '', 'id', '')
+TypeError: getPosts() takes 3 positional arguments but 4 were given
+Exception on / [GET]
+Traceback (most recent call last):
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\mrend\Desktop\mysite\app\routes\index.py", line 14, in index
+    posts, comments, likes = getPosts(cur, '', 'id', '')
+TypeError: getPosts() takes 3 positional arguments but 4 were given
+Exception on /wpis/346 [GET]
+Traceback (most recent call last):
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\mrend\Desktop\mysite\app\routes\post.py", line 13, in post
+    post, comments, likes = getPosts(cur, f'WHERE post_id={postid}', 'id')
+  File "C:\Users\mrend\Desktop\mysite\app\utils\functions.py", line 12, in getPosts
+    cur.execute(f"SELECT * FROM wpisy {where} ORDER BY `{order_by}` DESC")
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\MySQLdb\cursors.py", line 209, in execute
+    res = self._query(query)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\MySQLdb\cursors.py", line 315, in _query
+    db.query(q)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\MySQLdb\connections.py", line 239, in query
+    _mysql.connection.query(self, query)
+MySQLdb._exceptions.OperationalError: (1054, "Unknown column 'post_id' in 'where clause'")
+Exception on /obserwowane [GET]
+Traceback (most recent call last):
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\mrend\Desktop\mysite\app\routes\follows.py", line 26, in follows
+    posts, comments, likes = getPosts(cur, f'WHERE post_id IN {id_of_posts}', 'id')
+  File "C:\Users\mrend\Desktop\mysite\app\utils\functions.py", line 12, in getPosts
+    cur.execute(f"SELECT * FROM wpisy {where.replace('post_id', 'id')} ORDER BY `{order_by}` DESC")
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\MySQLdb\cursors.py", line 209, in execute
+    res = self._query(query)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\MySQLdb\cursors.py", line 315, in _query
+    db.query(q)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\MySQLdb\connections.py", line 239, in query
+    _mysql.connection.query(self, query)
+MySQLdb._exceptions.ProgrammingError: (1064, "You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '[155, 177] ORDER BY `id` DESC' at line 1")
+Exception on /obserwowane [GET]
+Traceback (most recent call last):
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\flask\app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\mrend\Desktop\mysite\app\routes\follows.py", line 26, in follows
+    posts, comments, likes = getPosts(cur, f'WHERE id IN {id_of_posts}', 'id')
+  File "C:\Users\mrend\Desktop\mysite\app\utils\functions.py", line 12, in getPosts
+    cur.execute(f"SELECT * FROM wpisy {where.replace('post_id', 'id')} ORDER BY `{order_by}` DESC")
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\MySQLdb\cursors.py", line 209, in execute
+    res = self._query(query)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\MySQLdb\cursors.py", line 315, in _query
+    db.query(q)
+  File "C:\Users\mrend\Desktop\mysite\venv\lib\site-packages\MySQLdb\connections.py", line 239, in query
+    _mysql.connection.query(self, query)
+MySQLdb._exceptions.ProgrammingError: (1064, "You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '[155, 177] ORDER BY `id` DESC' at line 1")
