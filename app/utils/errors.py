@@ -6,8 +6,9 @@ def page_not_found(e):
 
 
 def method_not_allowed(e):
-    return jsonify('Metoda niedozwolona')
-
+    if request.headers.get("X-Requested-With") == "XMLHttpRequest" or request.accept_mimetypes.accept_json:
+        return jsonify('Metoda niedozwolona')
+    return "Metoda niedozwolona."
 
 def request_entity_too_large(e):
     flash("Maksymalna wielkość pliku wynosi 1MB.")
