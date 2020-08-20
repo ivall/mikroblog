@@ -137,7 +137,7 @@ $(document).ready(function() {
             type : 'POST',
             data : { post_id : post_id },
             success: function(data) {
-                $('.likes-modal-body').text(data.likes);
+                $('.likes-modal-body').html(data.likes);
             }
         });
     });

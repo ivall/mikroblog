@@ -52,7 +52,6 @@ def likes():
     likes = cur.fetchall()
     if likes:
         for x in likes:
-            #  users.append('<a href="/profil/'+x['user_id']+'"'+'>'+x['user_id']+'</a>')
-            users.append(x['user_id'])
+            users.append('<a href="/profil/'+x['user_id']+'"'+'>'+x['user_id']+'</a>')
         return jsonify({'likes': ", ".join(users)})
     return jsonify({'likes': 'Nikt jeszcze nie polubił tego wpisu'})

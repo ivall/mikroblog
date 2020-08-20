@@ -27,6 +27,7 @@
 </form>
 {% endif %}
 <div class="container" style="{% if session['login'] %}margin-top: -50px;{% else %}margin-top: 80px;{% endif %}">
+<a href="https://IVshop.pl"><img src="https://i.imgur.com/ERUUKPM.png" alt="IVshop.pl" style="max-width: 100%"></img></a>
 {% if request.url_rule.endpoint == 'index_blueprint.index' or request.url_rule.endpoint == 'populary_posts_blueprint.populary' %}
     <ul class="nav nav-pills justify-content-center">
       <li class="nav-item sort">

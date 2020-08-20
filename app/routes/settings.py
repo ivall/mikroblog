@@ -1,7 +1,7 @@
 import bcrypt
 from flask import session, url_for, redirect, flash, render_template, Blueprint
 from .. import mysql
-from ..utils.forms import ChangeEmail, ChangePassword, ChangeDescription, ChangeNick
+from ..utils.forms import ChangeEmail, ChangePassword, ChangeDescription
 
 settings_blueprint = Blueprint('settings_blueprint', __name__)
 
